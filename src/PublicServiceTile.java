@@ -16,10 +16,6 @@ public class PublicServiceTile extends BuyableTile {
         this.tileName = name;
     }
 
-    public void SetParent(PublicServiceLot parent) {
-        this.lot = parent;
-    }
-
     ///Methods
 
     @Override
