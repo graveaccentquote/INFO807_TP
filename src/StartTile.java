@@ -9,12 +9,11 @@ public class StartTile extends Tile {
     //The salary given to any player passing by this Tile
     private int salary;
 
-
     ///Constructors
     public StartTile(){
         this.tileName = "Start Tile";
+        this.salary = 1000;
     }
-
 
     ///Methods
     @objid ("fe7b86ef-0209-4b8f-97a6-03bc3d7458a3")

@@ -11,4 +11,5 @@ public abstract class Tile {
 
     @objid ("8315b236-e5ca-48f0-ac9a-9bf435876fc8")
     public void ApplyOnPassBy(Player player);
+
 }

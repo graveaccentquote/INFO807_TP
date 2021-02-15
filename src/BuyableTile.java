@@ -41,9 +41,4 @@ public abstract class BuyableTile extends Tile {
     public void SetRentMultiplier(int multiplier) {
     }
 
-    public void SetParent(BuyableLot parent)
-    {
-        this.lot = parent;
-    }
-
 }
