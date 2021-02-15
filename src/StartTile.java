@@ -7,7 +7,7 @@ public class StartTile extends Tile {
     ///Attributes
     @objid ("e4521718-1b16-480b-8be9-c6372dc64640")
     //The salary given to any player passing by this Tile
-    private int salary;
+    final private int salary;
 
     ///Constructors
     public StartTile(){

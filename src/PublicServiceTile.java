@@ -1,6 +1,7 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 import PublicServiceLot;
+import Player;
 
 @objid ("39a11fa0-e1bb-44b0-a3c4-668d7fb2abc5")
 public class PublicServiceTile extends BuyableTile {
@@ -16,6 +17,30 @@ public class PublicServiceTile extends BuyableTile {
     }
 
     public void SetParent(PublicServiceLot parent) {
-        lot = parent;
+        this.lot = parent;
+    }
+
+    ///Methods
+
+    @Override
+    public void ApplyOnPassBy(Player player) {
+        //DO NOTHING
+    }
+
+    @Override
+    public void ApplyOnStop(Player player) {
+        if (!this.isFree())
+        {
+            //Make the player pay the tax
+            int diceSum = player.GetDiceSum();
+            int tax = this.rent * this.rentMultiplier * diceSum;
+            player.TransferMoney(tax, this.owner);
+
+            //Launch the buying status routine
+            player.DisplayBuyingStatus(this);
+        }
+        else
+            //Launch the BuyableTile buy routine
+            super.BuyRoutine(player);
     }
 }
