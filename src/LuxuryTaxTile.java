@@ -5,13 +5,12 @@ public class LuxuryTaxTile extends Tile {
 
     ///Attributes
     @objid ("9d23456e-882d-4ac0-be57-205a7aae64b2")
-    private final int flatTax;
+    private final int flatTax = 75;
 
     ///Constructors
     public LuxuryTaxTile()
     {
         this.tileName = "LUXURY TAX";
-        this.flatTax = 75;
     }
 
     ///Methods
