@@ -14,7 +14,7 @@ public class ParkTile implements Tile {
     ///Methods
     @objid ("0c9cb401-eb8c-44aa-88cd-3adce8e72120")
     public void ApplyOnStop(Player player) {
-        DO NOTHING
+        //DO NOTHING
     }
 
     @objid ("65c318cb-bcc4-405f-8df5-0d95d498bc5d")
