@@ -1,11 +1,10 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("847b2d1e-0d8a-4e85-b99b-4d3f6e5f7c23")
-public class ParkTile implements Tile {
+public class ParkTile extends Tile {
 
 
     ///Constructors
-
     public ParkTile()
     {
         this.tileName = "Free Park Tile";
