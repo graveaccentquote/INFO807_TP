@@ -8,7 +8,7 @@ public class Board {
     private HashMap<Player, integer> playerPositions;
 
     @objid ("c0bf46ef-f2b1-475e-b405-6fe875475f1c")
-    public List<Tile> tiles = new ArrayList<Tile> ();
+    private List<Tile> tiles = new ArrayList<Tile> ();
 
     @objid ("dabbef4e-3794-4b18-ae7f-04180ed118e0")
     public void MovePlayer(Player player, int tileCount) {
