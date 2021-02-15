@@ -5,7 +5,7 @@ public abstract class BuyableLot {
 
     ///Methods
     @objid ("d0013750-53cb-41d7-92bf-490d9b451930")
-    public void OnOwnershipChange() {
+    public abstract void OnOwnershipChange() {
     }
 
 }

@@ -29,7 +29,7 @@ public class PublicServiceTile extends BuyableTile {
 
     @Override
     public void ApplyOnStop(Player player) {
-        if (!this.isFree())
+        if (!this.IsFree())
         {
             //Make the player pay the tax
             int diceSum = player.GetDiceSum();
@@ -41,6 +41,6 @@ public class PublicServiceTile extends BuyableTile {
         }
         else
             //Launch the BuyableTile buy routine
-            super.BuyRoutine(player);
+            this.BuyRoutine(player);
     }
 }

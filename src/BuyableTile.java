@@ -32,7 +32,8 @@ public abstract class BuyableTile extends Tile {
     }
 
     @objid ("4f7bea4e-cbd2-47d8-a762-11166a99d9ee")
-    private boolean IsFree() {
+    protected boolean IsFree() {
+        return this.owner == null;
     }
 
     @objid ("8125d715-f525-45f0-8b71-75abb6943bbb")
