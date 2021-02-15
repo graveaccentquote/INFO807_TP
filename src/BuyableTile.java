@@ -1,7 +1,9 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("56363185-6c49-4415-a18b-abf102c268d4")
-public abstract class BuyableTile implements Tile {
+public abstract class BuyableTile extends Tile {
+
+    ///Attributes
     @objid ("64fa0212-1202-408f-a2b0-c55b0839852f")
     private int rent;
 
@@ -13,6 +15,11 @@ public abstract class BuyableTile implements Tile {
 
     @objid ("808df7c5-40f2-4827-9081-03d89fc9c06b")
     public Player owner;
+
+    ///Constructors
+
+
+    ///Methods
 
     @objid ("33941555-153b-4653-b913-e53598933c4e")
     public void Sell(Player buyer) {
@@ -32,6 +39,11 @@ public abstract class BuyableTile implements Tile {
 
     @objid ("c8d26b2f-a20f-46f1-8d11-9bd9cead1337")
     public void SetRentMultiplier(int multiplier) {
+    }
+
+    public void SetParent(BuyableLot parent)
+    {
+        this.lot = parent;
     }
 
 }

@@ -7,9 +7,8 @@ public abstract class Tile {
 
     ///Methods
     @objid ("3b476daf-4be0-4346-b183-7bd2155efe97")
-    void ApplyOnStop(Player player);
+    public void ApplyOnStop(Player player);
 
     @objid ("8315b236-e5ca-48f0-ac9a-9bf435876fc8")
-    void ApplyOnPassBy(Player player);
-
+    public void ApplyOnPassBy(Player player);
 }
