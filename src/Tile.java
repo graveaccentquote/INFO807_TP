@@ -1,7 +1,11 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("c7d72462-e678-413d-a32e-0f34e97af2f9")
-public interface Tile {
+public abstract class Tile {
+
+    public String tileName;
+
+    ///Methods
     @objid ("3b476daf-4be0-4346-b183-7bd2155efe97")
     void ApplyOnStop(Player player);
 
