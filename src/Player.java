@@ -22,6 +22,10 @@ public class Player {
 
     @objid ("6789d5b2-9fba-42f9-8afb-7b9722acaf66")
     public void PlayTurn() {
+        do{
+            int distance = RollDiceRoutine();
+            game.MovePlayer(distance);
+        } while(CanPlayAgain());
     }
 
     @objid ("ad04ff48-3070-4ba5-8a70-4f7657f95867")
@@ -46,7 +50,8 @@ public class Player {
 
     @objid ("02bc719e-a497-4f36-9205-7c95cbf94625")
     public int RollDiceRoutine() {
-
+        diceCup.RollDice();
+        return diceCup.GetSum();
     }
 
     @objid ("266a60b3-2e0d-4b5c-9cda-9864c4d93d2b")
