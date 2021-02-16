@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("a0cc559e-e021-471f-bd36-cab94d996b3b")
@@ -56,7 +58,11 @@ public class Player {
 
     @objid ("266a60b3-2e0d-4b5c-9cda-9864c4d93d2b")
     private void ConstructionRoutine() {
-
+        DisplayOwnedProperties();
+        PropertyTile t = GetPropertyChoice();
+        if(t!= null){
+            t.Build();
+        }
     }
 
     @objid ("56e66eb5-b4a8-40e9-aea7-b2fb5cdad55f")
@@ -66,6 +72,34 @@ public class Player {
 
     @objid ("e656ea75-9ebf-42d4-a48a-2b1a309123ba")
     private void DisplayOwnedProperties() {
+        System.out.println("Current player's properties :");
+        ArrayList<PropertyTile> properties = GetOwnedProperties();
+        for(int i=0;i<properties.size();i++){
+            System.out.println(i+") "+properties.get(i).tileName);
+        }
+    }
+
+    private PropertyTile GetPropertyChoice(){
+        Scanner input = new Scanner( System.in );
+        System.out.println("Which property do you want to build on ?");
+        System.out.println("Type -1 to build on none.");
+        ArrayList<PropertyTile> ownedProperties = GetOwnedProperties();
+        int p = input.nextInt();
+        if(p<0 || p>ownedProperties.size()){
+            return null;
+        } else {
+            return ownedProperties.get(p);
+        }
+    }
+
+    private ArrayList<PropertyTile> GetOwnedProperties(){
+        ArrayList<PropertyTile> res = new ArrayList<PropertyTile>();
+        for(BuyableTile tile : ownedTiles){
+            if(tile instanceof PropertyTile){
+                res.add((PropertyTile)tile);
+            }
+        }
+        return res;
     }
 
     @objid ("0217845d-3df5-42f4-8396-a2c5f8987361")
