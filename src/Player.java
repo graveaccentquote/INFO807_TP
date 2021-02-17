@@ -7,7 +7,7 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 @objid ("a0cc559e-e021-471f-bd36-cab94d996b3b")
 public class Player {
 
-    private final int startingMoney = 2000;
+    private final int startingMoney = 1500;
 
     private String playerName;
 
