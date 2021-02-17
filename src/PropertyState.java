@@ -11,7 +11,7 @@ public abstract class PropertyState {
     }
 
     @objid ("9c1aefd1-500d-4a7e-9394-5abfb44d892b")
-    public void ApplyOnStop() {
+    public void ApplyOnStop(Player player) {
     }
 
 }

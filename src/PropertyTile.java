@@ -6,7 +6,7 @@ public class PropertyTile extends BuyableTile {
     private int buildingCount;
 
     @objid ("2ad7505f-be7a-4fde-8c38-63e582f9ed2d")
-    private int[] buildingRents = new int[5];
+    private int[] buildingRents;
 
     @objid ("142bd902-71af-4257-8fba-2b2d22820ec6")
     private int buildingCost;
@@ -15,10 +15,20 @@ public class PropertyTile extends BuyableTile {
     public PropertyLot lot;
 
     @objid ("30c5e16d-5575-4703-ab36-5e83edf39595")
-    public PropertyState state;
+    private PropertyState state;
+
+    public PropertyTile(String name, PropertyLot lot, int buildingCost, int[] buildingRents){
+        this.buildingCost = buildingCost;
+        this.buildingRents = buildingRents;
+        this.lot = lot;
+        buildingCount = 0;
+        tileName = name;
+        state = new FreeState();
+    }
 
     @objid ("2c33ec2b-dfe7-4eb3-8b9c-8964fb48bf23")
     public void Build() {
+        state.Build();
     }
 
     @objid ("81660507-a19d-4f03-844c-8361e7008965")
@@ -31,6 +41,11 @@ public class PropertyTile extends BuyableTile {
 
     @objid ("282ab172-fa28-48b3-8673-79536e5dc863")
     public void SellBuilding() {
+        state.SellBuilding();
     }
 
+    @Override
+    public void ApplyOnStop(Player player) {
+        state.ApplyOnStop(player);
+    }
 }
