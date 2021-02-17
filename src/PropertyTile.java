@@ -17,7 +17,8 @@ public class PropertyTile extends BuyableTile {
     @objid ("30c5e16d-5575-4703-ab36-5e83edf39595")
     private PropertyState state;
 
-    public PropertyTile(String name, PropertyLot lot, int buildingCost, int[] buildingRents){
+    public PropertyTile(String name, PropertyLot lot, int buyingCost, int buildingCost, int[] buildingRents){
+        this.buyingCost = buyingCost;
         this.buildingCost = buildingCost;
         this.buildingRents = buildingRents;
         this.lot = lot;
