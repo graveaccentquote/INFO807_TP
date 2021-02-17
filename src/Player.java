@@ -6,6 +6,9 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("a0cc559e-e021-471f-bd36-cab94d996b3b")
 public class Player {
+
+    private final int startingMoney = 2000;
+
     @objid ("db69a380-e196-4731-831e-4f69aa20869f")
     private int money = 0;
 
@@ -17,6 +20,11 @@ public class Player {
 
     @objid ("f9510305-749f-4142-aa96-8964d30f4f65")
     private DiceCup diceCup;
+
+    public Player()
+    {
+        money = startingMoney;
+    }
 
     public Player(int baseMoney){
         money = baseMoney;
