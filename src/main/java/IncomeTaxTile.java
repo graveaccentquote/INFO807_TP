@@ -15,8 +15,8 @@ public class IncomeTaxTile extends Tile {
     @Override
     public void ApplyOnStop(Player player) {
         //Pay taxRatio * money or minTax, whichever is greater
-        double tax = player.GetMoney() * this.taxRatio;
-        player.Debit(max(minTax, tax));
+        int tax = (int) Math.floor((player.GetMoney() * this.taxRatio));
+        player.Debit(Math.max(minTax, tax));
     }
 
     @Override
