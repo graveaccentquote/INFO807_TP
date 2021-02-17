@@ -22,7 +22,6 @@ public abstract class BuyableTile extends Tile {
 
     ///Constructors
 
-
     ///Methods
 
     @objid ("33941555-153b-4653-b913-e53598933c4e")
