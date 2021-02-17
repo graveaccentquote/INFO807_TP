@@ -7,13 +7,13 @@ public abstract class BuyableTile extends Tile {
 
     ///Attributes
     @objid ("64fa0212-1202-408f-a2b0-c55b0839852f")
-    private int rent;
+    protected int rent;
 
     @objid ("47b3a17b-7b7f-445c-980e-1b1ee20d9731")
-    private int rentMultiplier;
+    protected int rentMultiplier;
 
     @objid ("25e80dcb-737c-44f2-bbb6-81ae069d0b88")
-    private int cost;
+    protected int cost;
 
     @objid ("808df7c5-40f2-4827-9081-03d89fc9c06b")
     public Player owner;
