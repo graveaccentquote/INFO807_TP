@@ -3,6 +3,9 @@ import java.util.List;
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 import java.util.Random;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import Player;
 import Board;
 
@@ -19,14 +22,14 @@ public class MonopolyGame {
     public Board board;
 
     @objid ("fc0ee026-8ff8-47f6-9f6f-6f1d18546a2d")
-    public List<Player> players = new ArrayList<Player> ();
+    public ArrayList<Player> players = new ArrayList<Player> ();
 
     ///Constructors
-    public MonopologyGame ()
+    public MonopolyGame ()
     {
         Player Tom = new Player("Tom");
         Player Hugo = new Player("Hugo");
-        Player Theo = new Player("Théo");
+        Player Theo = new Player("Theo");
 
         players.add(Tom);
         players.add(Hugo);
@@ -56,6 +59,11 @@ public class MonopolyGame {
     @objid ("f6446150-23b9-4458-bacd-3fd320554b02")
     public void MovePlayer(int tileCount) {
         board.MovePlayer(currentPlayer, tileCount);
+    }
+
+    private void writeJSON(String outputFilename)
+    {
+
     }
 
 }
