@@ -1,4 +1,4 @@
-public class GoToJailTile extends Tile{*
+public class GoToJailTile extends Tile{
     ///Constructor
     public GoToJailTile()
     {

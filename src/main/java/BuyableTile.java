@@ -1,7 +1,5 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-import Player;
-
 @objid ("56363185-6c49-4415-a18b-abf102c268d4")
 public abstract class BuyableTile extends Tile {
 

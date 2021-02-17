@@ -6,10 +6,6 @@ import java.util.Random;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import Player;
-import Board;
-
-
 @objid ("8c91ecaf-394b-446c-bee2-426ab6f7efb0")
 public class MonopolyGame {
 
@@ -46,9 +42,10 @@ public class MonopolyGame {
     ///Main
     public static void main(String[] args)
     {
+
         MonopolyGame game = new MonopolyGame("test");
+
     }
-}
 
     ///Methods
     @objid ("242a0e32-2682-45b3-abef-5325a2bca463")
@@ -88,6 +85,7 @@ public class MonopolyGame {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
     }
 
 }

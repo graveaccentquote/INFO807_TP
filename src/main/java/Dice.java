@@ -1,5 +1,3 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
 import java.util.Random;
 
 @objid ("b63428c3-52cb-4cfe-a70d-497d3a9631d7")

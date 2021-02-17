@@ -1,8 +1,5 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
-import PublicServiceLot;
-import Player;
-
 @objid ("39a11fa0-e1bb-44b0-a3c4-668d7fb2abc5")
 public class PublicServiceTile extends BuyableTile {
 
