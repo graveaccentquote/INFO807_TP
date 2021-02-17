@@ -9,6 +9,8 @@ public class Player {
 
     private final int startingMoney = 2000;
 
+    private String playerName;
+
     @objid ("db69a380-e196-4731-831e-4f69aa20869f")
     private int money = 0;
 
@@ -21,8 +23,9 @@ public class Player {
     @objid ("f9510305-749f-4142-aa96-8964d30f4f65")
     private DiceCup diceCup;
 
-    public Player()
+    public Player(String playerName)
     {
+        this.playerName = playerName;
         money = startingMoney;
     }
 
