@@ -7,7 +7,7 @@ public abstract class BuyableTile extends Tile {
 
     protected int cost;
 
-    public Player owner;
+    protected Player owner;
 
     protected BuyableLot lot;
 
@@ -59,5 +59,7 @@ public abstract class BuyableTile extends Tile {
     {
         this.lot = buyableLot;
     }
+
+    public Player getOwner(){ return this.owner; }
 
 }
