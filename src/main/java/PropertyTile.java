@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class PropertyTile extends BuyableTile {
     private int buildingCount;
 
@@ -17,6 +19,7 @@ public class PropertyTile extends BuyableTile {
         buildingCount = 0;
         tileName = name;
         state = new FreeState();
+        lot.addChild(this);
     }
 
     public void build() {
@@ -41,5 +44,15 @@ public class PropertyTile extends BuyableTile {
     @Override
     public void applyOnPassBy(Player player) {
         //TODO
+    }
+
+    public String toString(){
+        return this.tileName
+                + " ["
+                + this.cost
+                + " / "
+                + this.buildingCost
+                + "] "
+                + Arrays.toString(this.buildingRents);
     }
 }
