@@ -8,7 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.util.Iterator;
 
 public class MonopolyGame {
 
@@ -66,17 +65,13 @@ public class MonopolyGame {
 
             if (playerNamesList == null)
             {
-                System.err.println("Error in JSON file");
+                System.err.println("Error in JSON file trying to read player names");
                 throw new Exception();
             }
 
             for (Object name : playerNamesList)
                 this.players.add(new Player((String) name));
-
-            for (Player player : this.players)
-            {
-                System.out.println("player : " + player.toString());
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
