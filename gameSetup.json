@@ -1,10 +1,12 @@
 {
-  "PlayerNames": ["Theo", "Luc", "Paul"],
-  "Board": {
-    "Tiles": [
+  "players": ["Theo", "Luc", "Paul"],
+  "board": {
+    "propertyLots": ["purpleLot"],
+    "tiles": [
       { "type": "StartTile"},
       { "type": "PropertyTile",
         "name": "Mediterranean Avenue",
+        "parent": "purpleLot",
         "buyingCost": 60,
         "constructionCost": 50,
         "rents": [
@@ -13,6 +15,7 @@
       },
       { "type": "PropertyTile",
         "name": "Mediterranean Avenue",
+        "parent": "purpleLot",
         "buyingCost": 60,
         "constructionCost": 50,
         "rents": [
