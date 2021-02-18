@@ -1,12 +1,9 @@
 public abstract class PropertyState {
 
-    public void Build() {
-    }
+    abstract void Build();
 
-    public void SellBuilding() {
-    }
+    abstract void SellBuilding();
 
-    public void ApplyOnStop(Player player) {
-    }
+    abstract void ApplyOnStop(Player player);
 
 }
