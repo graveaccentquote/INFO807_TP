@@ -1,25 +1,25 @@
 {
   "players": ["Theo", "Luc", "Paul"],
   "board": {
-    "propertyLots": ["purpleLot"],
+    "propertyLots": ["purpleLot", "lightBlueLot"],
     "tiles": [
       { "type": "StartTile"},
       { "type": "PropertyTile",
         "name": "Mediterranean Avenue",
         "parent": "purpleLot",
-        "buyingCost": 60,
-        "constructionCost": 50,
+        "buyingCost": "60",
+        "constructionCost": "50",
         "rents": [
-          2, 10, 30, 90, 160, 250
+          "2", "10", "30", "90", "160", "250"
         ]
       },
       { "type": "PropertyTile",
-        "name": "Mediterranean Avenue",
+        "name": "Mediterranean Avenue 2",
         "parent": "purpleLot",
-        "buyingCost": 60,
-        "constructionCost": 50,
+        "buyingCost": "60",
+        "constructionCost": "50",
         "rents": [
-          4, 20, 60, 180, 320, 450
+          "4", "20", "60", "180", "320", "450"
         ]
       }
     ]
