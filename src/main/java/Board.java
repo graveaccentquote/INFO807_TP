@@ -121,10 +121,12 @@ public class Board {
                         this.tiles.add(new PropertyTile(name, lot, buyingCost, buildingCost, rents));
                         break;
                     case "TrainStationTile":
-                        this.tiles.add(new TrainStationTile(name, trainStationLot));
+                        buyingCost = Integer.parseInt((String) tile.get("buyingCost") );
+                        this.tiles.add(new TrainStationTile(name, buyingCost, trainStationLot));
                         break;
                     case "PublicServiceTile":
-                        this.tiles.add(new PublicServiceTile(name, publicServiceLot));
+                        buyingCost = Integer.parseInt((String) tile.get("buyingCost") );
+                        this.tiles.add(new PublicServiceTile(name, buyingCost, publicServiceLot));
                         break;
                     case "DrawCardTile":
                         this.tiles.add(new DrawCardTile(name));
@@ -132,13 +134,16 @@ public class Board {
                     case "LuxuryTaxTile":
                         this.tiles.add(new LuxuryTaxTile());
                         break;
+                    case "IncomeTaxTile":
+                        this.tiles.add(new IncomeTaxTile());
+                        break;
                     case "GoToJailTile":
                         this.tiles.add(new GoToJailTile());
                         break;
                     case "ParkTile":
                         this.tiles.add(new ParkTile());
                         break;
-                    case "PrisonTile":
+                    case "JailTile":
                         this.tiles.add(new PrisonTile());
                         break;
 
