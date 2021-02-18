@@ -1,9 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class PublicServiceLot extends BuyableLot {
 
     ///Attributes
+    private final int lowMultiplier = 4;
+    private final int highMultiplier = 10;
+
+    //List of children of this lot
     public List<PublicServiceTile> children = new ArrayList<PublicServiceTile> ();
 
     ///Constructors
@@ -19,7 +24,23 @@ public class PublicServiceLot extends BuyableLot {
 
     @Override
     public void onOwnershipChange() {
-        //TODO
+        HashMap<Player, Integer> map = new HashMap<Player, Integer>();
+        Player owner;
+
+        for (PublicServiceTile publicServiceTile : children)
+        {
+            owner = publicServiceTile.getOwner();
+            if (map.containsKey(owner) )
+                map.put(owner, highMultiplier);
+            else
+                map.put(owner, lowMultiplier);
+        }
+
+        for (PublicServiceTile publicServiceTile : children)
+        {
+            owner = publicServiceTile.getOwner();
+            publicServiceTile.setRentMultiplier(map.get(owner));
+        }
     }
 
     @Override
