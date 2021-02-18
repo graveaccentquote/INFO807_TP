@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class PropertyTile extends BuyableTile {
     private int buildingCount;
 
-    private int[] buildingRents;
+    private int[] buildingRents = new int[6];
 
     private int buildingCost;
 
@@ -14,12 +14,12 @@ public class PropertyTile extends BuyableTile {
     public PropertyTile(String name, PropertyLot lot, int buyingCost, int buildingCost, int[] buildingRents){
         this.cost = buyingCost;
         this.buildingCost = buildingCost;
-        this.buildingRents = buildingRents;
         this.lot = lot;
         buildingCount = 0;
         tileName = name;
         state = new FreeState();
         lot.addChild(this);
+        System.arraycopy(buildingRents, 0, this.buildingRents, 0, buildingRents.length);
     }
 
     public void build() {
