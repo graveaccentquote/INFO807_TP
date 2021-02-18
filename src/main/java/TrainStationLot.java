@@ -13,7 +13,7 @@ public class TrainStationLot extends BuyableLot {
         for (TrainStationTile trainStation : trainStations)
         {
             children.add(trainStation);
-            trainStation.SetParent(this);
+            trainStation.setParent(this);
         }
     }
 
