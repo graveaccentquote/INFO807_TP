@@ -68,4 +68,8 @@ public class PropertyTile extends BuyableTile {
     public void SetBuildingCount(int count) {
         buildingCount = count;
     }
+
+    public int GetSellingPrice(){
+        return buildingCost/2;
+    }
 }
