@@ -6,16 +6,18 @@ public class TrainStationTile extends BuyableTile {
     public TrainStationLot lot;
 
     ///Constructors
-    public TrainStationTile(String name)
+    public TrainStationTile(String name, int buyingCost)
     {
         this.tileName = name;
         this.rent = trainStationRent;
+        this.cost = buyingCost;
     }
 
-    public TrainStationTile(String name, TrainStationLot parent)
+    public TrainStationTile(String name, int buyingCost, TrainStationLot parent)
     {
         this.tileName = name;
         this.rent = trainStationRent;
+        this.cost = buyingCost;
         this.lot = parent;
         parent.addChild(this);
     }

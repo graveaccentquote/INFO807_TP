@@ -4,14 +4,16 @@ public class PublicServiceTile extends BuyableTile {
     private PublicServiceLot lot;
 
     ///Constructors
-    public PublicServiceTile(String name)
+    public PublicServiceTile(String name, int buyingCost)
     {
         this.tileName = name;
+        this.cost = buyingCost;
     }
 
-    public PublicServiceTile(String name, PublicServiceLot parent)
+    public PublicServiceTile(String name, int buyingCost, PublicServiceLot parent)
     {
         this.tileName = name;
+        this.cost = buyingCost;
         this.lot = parent;
         parent.addChild(this);
     }
