@@ -16,7 +16,12 @@ public class PropertyTile extends BuyableTile {
         this.lot = lot;
         buildingCount = 0;
         tileName = name;
-        state = new FreeState();
+        //Initial state
+        SetState(new FreeState(this));
+    }
+
+    public void SetState(PropertyState state){
+        this.state = state;
     }
 
     public void Build() {
@@ -24,9 +29,16 @@ public class PropertyTile extends BuyableTile {
     }
 
     public void BecomeConstructible() {
+        SetState(new ConstructibleState(this));
     }
 
     public void BecomeUnconstructible() {
+        SetState(new OwnedState(this));
+    }
+
+    // Sells the property to a player
+    public void Sell(Player player){
+        state.Sell(player);
     }
 
     public void SellBuilding() {
@@ -41,5 +53,19 @@ public class PropertyTile extends BuyableTile {
     @Override
     public void ApplyOnPassBy(Player player) {
         //TODO
+    }
+
+    @Override
+    protected void ChangeOwnership(Player player) {
+        super.ChangeOwnership(player);
+        state.OnOwnershipChange(player);
+    }
+
+    public int GetBuildingCount() {
+        return buildingCount;
+    }
+
+    public void SetBuildingCount(int count) {
+        buildingCount = count;
     }
 }

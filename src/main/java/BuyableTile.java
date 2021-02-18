@@ -18,7 +18,7 @@ public abstract class BuyableTile extends Tile {
     public void Sell(Player buyer) {
     }
 
-    private void ChangeOwnership(Player player) {
+    protected void ChangeOwnership(Player player) {
         this.owner = player;
         this.lot.OnOwnershipChange();
     }
