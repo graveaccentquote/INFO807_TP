@@ -70,6 +70,12 @@ public class PropertyTile extends BuyableTile {
     }
 
     public int GetSellingPrice(){
-        return buildingCost/2;
+        return cost/2;
+    }
+
+    public int GetRentCost(){
+        int baseRent = rent * rentMultiplier;
+        int buildingRent = buildingRents[buildingCount]; // TODO 0 buildings ?
+        return  baseRent + buildingRent;
     }
 }
