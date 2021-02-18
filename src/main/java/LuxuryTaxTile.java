@@ -10,11 +10,11 @@ public class LuxuryTaxTile extends Tile {
     }
 
     ///Methods
-    public void ApplyOnStop(Player player) {
-        player.Debit(this.flatTax);
+    public void applyOnStop(Player player) {
+        player.debit(this.flatTax);
     }
 
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //DO NOTHING
     }
 

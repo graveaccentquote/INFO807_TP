@@ -8,12 +8,12 @@ public class GoToJailTile extends Tile{
 
     ///Methods
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
         //DO NOTHING
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //DO NOTHING
     }
 }

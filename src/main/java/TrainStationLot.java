@@ -18,7 +18,7 @@ public class TrainStationLot extends BuyableLot {
     }
 
     @Override
-    public void OnOwnershipChange() {
+    public void onOwnershipChange() {
         //TODO
     }
 }

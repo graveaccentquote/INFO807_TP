@@ -18,44 +18,44 @@ public abstract class BuyableTile extends Tile {
     public void Sell(Player buyer) {
     }
 
-    private void ChangeOwnership(Player player) {
+    private void changeOwnership(Player player) {
         this.owner = player;
-        this.lot.OnOwnershipChange();
+        this.lot.onOwnershipChange();
     }
 
-    protected boolean IsFree() {
+    protected boolean isFree() {
         return this.owner == null;
     }
 
-    protected void BuyRoutine(Player player) {
-        if (player.CanAfford(this.cost)){
+    protected void buyRoutine(Player player) {
+        if (player.canAfford(this.cost)){
             //Display the buying proposition to the player
-            if (player.DisplayBuyingProposition(this)) {
+            if (player.displayBuyingProposition(this)) {
                 //The player accepts, we debit him
-                player.Debit(this.cost);
+                player.debit(this.cost);
 
                 //Then we apply the on ownership change subroutine
-                this.ChangeOwnership(player);
+                this.changeOwnership(player);
             }
         }
         else
         {
             //Player doesn't have enough money to buy the tile, display status and abort
-            player.DisplayBuyingStatus(this);
+            player.displayBuyingStatus(this);
         }
 
     }
 
-    public void SetRentMultiplier(int multiplier) {
+    public void setRentMultiplier(int multiplier) {
         this.rentMultiplier = multiplier;
     }
 
-    public int GetCost()
+    public int getCost()
     {
         return this.cost;
     }
 
-    public void SetParent(BuyableLot buyableLot)
+    public void setParent(BuyableLot buyableLot)
     {
         this.lot = buyableLot;
     }

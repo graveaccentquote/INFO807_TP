@@ -12,12 +12,12 @@ public class StartTile extends Tile {
     }
 
     ///Methods
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
         //DO NOTHING
     }
 
-    public void ApplyOnPassBy(Player player) {
-        player.ReceiveMoney(this.salary);
+    public void applyOnPassBy(Player player) {
+        player.receiveMoney(this.salary);
     }
 
 }

@@ -6,27 +6,33 @@ public class Board {
 
     ///Attributes
     //Map of players and the index of the Tile they're on
-    private HashMap<Player, Integer> playerPositions;
+    private HashMap<Player, Integer> playerPositions = new HashMap<Player, Integer>();
 
     //Circular list of Tiles
     private List<Tile> tiles = new ArrayList<Tile> ();
 
     ///Constructors
-    public Board(ArrayList<Player> players)
+    public Board(String fileName, ArrayList<Player> players)
     {
+        //Parse the JSON file for tile arrangement
+        this.createTileArrangement(fileName);
+
+        //Put every player on the start tile
         for (Player player : players)
             playerPositions.put(player, 0);
 
-        this.createTileArrangement();
+        for (Player o : playerPositions.keySet())
+            System.out.println(o.toString() + playerPositions.get(o));
+
     }
 
     ///Methods
-    public void MovePlayer(Player player, int tileCount) {
+    public void movePlayer(Player player, int tileCount) {
 
         Integer index = playerPositions.get(player);
         int size = this.tiles.size();
 
-        //Do passby actions
+        //Do pass-by actions
         for (int i=1; i<=tileCount; ++i)
         {
             tiles.get((index + i) % size).ApplyOnPassBy(player);
@@ -41,8 +47,8 @@ public class Board {
         this.playerPositions.put(player, newIndex);
     }
 
-    //Hardcoded version of tile arrangement
-    private void createTileArrangement()
+    //Parse the JSON file for tile arrangement
+    private void createTileArrangement(String fileName)
     {
         //TODO
     }

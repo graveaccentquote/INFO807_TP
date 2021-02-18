@@ -12,24 +12,24 @@ public class PublicServiceTile extends BuyableTile {
     ///Methods
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //DO NOTHING
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
-        if (!this.IsFree())
+    public void applyOnStop(Player player) {
+        if (!this.isFree())
         {
             //Make the player pay the tax
-            int diceSum = player.GetDiceSum();
+            int diceSum = player.getDiceSum();
             int tax = this.rent * this.rentMultiplier * diceSum;
-            player.TransferMoney(tax, this.owner);
+            player.transferMoney(tax, this.owner);
 
             //Launch the buying status routine
-            player.DisplayBuyingStatus(this);
+            player.displayBuyingStatus(this);
         }
         else
             //Launch the BuyableTile buy routine
-            this.BuyRoutine(player);
+            this.buyRoutine(player);
     }
 }

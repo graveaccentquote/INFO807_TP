@@ -8,15 +8,15 @@ public class PropertyLot extends BuyableLot {
 
     public List<PropertyTile> children = new ArrayList<PropertyTile> ();
 
-    public void OnBuildEvent() {
+    public void onBuildEvent() {
     }
 
-    public boolean IsValidBuildingCount(int buildingCount) {
+    public boolean isValidBuildingCount(int buildingCount) {
         return false; //TODO
     }
 
     @Override
-    public void OnOwnershipChange() {
+    public void onOwnershipChange() {
 
     }
 }

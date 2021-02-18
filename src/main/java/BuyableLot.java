@@ -1,6 +1,6 @@
 public abstract class BuyableLot {
 
     ///Methods
-    public abstract void OnOwnershipChange();
+    public abstract void onOwnershipChange();
 
 }

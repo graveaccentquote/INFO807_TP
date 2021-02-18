@@ -12,12 +12,12 @@ public class PublicServiceLot extends BuyableLot {
         for (PublicServiceTile publicServiceTile : publicServiceTiles)
         {
             this.children.add(publicServiceTile);
-            publicServiceTile.SetParent(this);
+            publicServiceTile.setParent(this);
         }
     }
 
     @Override
-    public void OnOwnershipChange() {
+    public void onOwnershipChange() {
         //TODO
     }
 }

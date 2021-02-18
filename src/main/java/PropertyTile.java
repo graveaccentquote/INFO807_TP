@@ -19,27 +19,27 @@ public class PropertyTile extends BuyableTile {
         state = new FreeState();
     }
 
-    public void Build() {
-        state.Build();
+    public void build() {
+        state.build();
     }
 
-    public void BecomeConstructible() {
+    public void becomeConstructible() {
     }
 
-    public void BecomeUnconstructible() {
+    public void becomeUnconstructible() {
     }
 
-    public void SellBuilding() {
-        state.SellBuilding();
-    }
-
-    @Override
-    public void ApplyOnStop(Player player) {
-        state.ApplyOnStop(player);
+    public void sellBuilding() {
+        state.sellBuilding();
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnStop(Player player) {
+        state.applyOnStop(player);
+    }
+
+    @Override
+    public void applyOnPassBy(Player player) {
         //TODO
     }
 }
