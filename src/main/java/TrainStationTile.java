@@ -8,9 +8,16 @@ public class TrainStationTile extends BuyableTile {
     ///Constructors
     public TrainStationTile(String name)
     {
-
         this.tileName = name;
         this.rent = trainStationRent;
+    }
+
+    public TrainStationTile(String name, TrainStationLot parent)
+    {
+        this.tileName = name;
+        this.rent = trainStationRent;
+        this.lot = parent;
+        parent.addChild(this);
     }
 
     ///Methods
