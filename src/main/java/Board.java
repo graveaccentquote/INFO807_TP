@@ -21,9 +21,8 @@ public class Board {
         for (Player player : players)
             playerPositions.put(player, 0);
 
-        for (Player o : playerPositions.keySet())
-            System.out.println(o.toString() + playerPositions.get(o));
 
+        System.out.println(this.toString());
     }
 
     ///Methods
@@ -35,13 +34,13 @@ public class Board {
         //Do pass-by actions
         for (int i=1; i<=tileCount; ++i)
         {
-            tiles.get((index + i) % size).ApplyOnPassBy(player);
+            tiles.get((index + i) % size).applyOnPassBy(player);
         }
 
         int newIndex = (index + tileCount) % size;
 
         //Do stop action
-        tiles.get(newIndex).ApplyOnStop(player);
+        tiles.get(newIndex).applyOnStop(player);
 
         //Update player position
         this.playerPositions.put(player, newIndex);
@@ -51,6 +50,31 @@ public class Board {
     private void createTileArrangement(String fileName)
     {
         //TODO
+    }
+
+    public String toString()
+    {
+        StringBuilder acc = new StringBuilder("");
+
+        for (Player o : playerPositions.keySet())
+        {
+            acc.append("Player ");
+            acc.append(o.toString());
+            acc.append(" is on index : ");
+            acc.append(playerPositions.get(o));
+            acc.append("\n");
+        }
+
+        for (int i = 0; i<this.tiles.size(); ++i)
+        {
+            acc.append("Tile index :");
+            acc.append(i);
+            acc.append(" - ");
+            acc.append(this.tiles.get(i).toString());
+            acc.append("\n");
+        }
+
+        return acc.toString();
     }
 
 }
