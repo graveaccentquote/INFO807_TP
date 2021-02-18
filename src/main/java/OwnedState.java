@@ -5,17 +5,17 @@ public class OwnedState extends SellableState {
 
     @Override
     public void OnOwnershipChange(Player player) {
-
+        // Nothing to do in this state
     }
 
     @Override
     public void Build() {
-
+        // Can't build in this state
     }
 
     @Override
     public void SellBuilding() {
-
+        // Can't sell a building in this state
     }
 
     @Override
