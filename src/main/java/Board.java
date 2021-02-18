@@ -1,6 +1,14 @@
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileReader;
 
 public class Board {
 
@@ -49,7 +57,97 @@ public class Board {
     //Parse the JSON file for tile arrangement
     private void createTileArrangement(String fileName)
     {
-        //TODO
+        PublicServiceLot publicServiceLot = new PublicServiceLot();
+        TrainStationLot trainStationLot = new TrainStationLot();
+        PropertyLot lot;
+        int buyingCost;
+        int buildingCost;
+        int[] rents = new int[6];
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(new FileReader(fileName));
+
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONObject board = (JSONObject) jsonObject.get("board");
+
+
+            //Parse the property Lots
+            JSONArray propertyLots = (JSONArray) board.get("propertyLots");
+
+            if (propertyLots == null)
+            {
+                System.err.println("Error in JSON file trying to read propertyLots");
+                throw new Exception();
+            }
+
+            HashMap<String, PropertyLot> propertyLotHashMap = new HashMap<String, PropertyLot>();
+
+            for (Object lotName : propertyLots)
+                propertyLotHashMap.put((String) lotName, new PropertyLot());
+
+            //Parse the tiles
+            JSONArray tilesArray = (JSONArray) board.get("tiles");
+
+            if (tiles == null)
+            {
+                System.err.println("Error in JSON file trying to read tiles");
+                throw new Exception();
+            }
+
+            for (Object element : tilesArray)
+            {
+                JSONObject tile = (JSONObject) element;
+                String type = (String) tile.get("type");
+                String name = (String) tile.get("name");
+
+                //Create a new tile depending on type
+                switch (type)
+                {
+                    case "StartTile":
+                        this.tiles.add(new StartTile());
+                        break;
+                    case "PropertyTile":
+                        String lotName = (String) tile.get("parent");
+                        buyingCost = Integer.parseInt((String) tile.get("buyingCost") );
+                        buildingCost = Integer.parseInt((String) tile.get("constructionCost"));
+                        JSONArray rentsArray = (JSONArray) tile.get("rents");
+
+                        for (int i=0; i<rentsArray.size(); ++i)
+                            rents[i] = Integer.parseInt((String) rentsArray.get(i));
+
+                        lot = propertyLotHashMap.get(lotName);
+                        this.tiles.add(new PropertyTile(name, lot, buyingCost, buildingCost, rents));
+                        break;
+                    case "TrainStationTile":
+                        this.tiles.add(new TrainStationTile(name, trainStationLot));
+                        break;
+                    case "PublicServiceTile":
+                        this.tiles.add(new PublicServiceTile(name, publicServiceLot));
+                        break;
+                    case "DrawCardTile":
+                        this.tiles.add(new DrawCardTile(name));
+                        break;
+                    case "LuxuryTaxTile":
+                        this.tiles.add(new LuxuryTaxTile());
+                        break;
+                    case "GoToJailTile":
+                        this.tiles.add(new GoToJailTile());
+                        break;
+                    case "ParkTile":
+                        this.tiles.add(new ParkTile());
+                        break;
+                    case "PrisonTile":
+                        this.tiles.add(new PrisonTile());
+                        break;
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public String toString()
@@ -67,7 +165,7 @@ public class Board {
 
         for (int i = 0; i<this.tiles.size(); ++i)
         {
-            acc.append("Tile index :");
+            acc.append("Tile index : ");
             acc.append(i);
             acc.append(" - ");
             acc.append(this.tiles.get(i).toString());
