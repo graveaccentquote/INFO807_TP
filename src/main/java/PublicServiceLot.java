@@ -7,6 +7,7 @@ public class PublicServiceLot extends BuyableLot {
     public List<PublicServiceTile> children = new ArrayList<PublicServiceTile> ();
 
     ///Constructors
+    public PublicServiceLot() {} //Default constructor
     public PublicServiceLot(ArrayList<PublicServiceTile> publicServiceTiles)
     {
         for (PublicServiceTile publicServiceTile : publicServiceTiles)
@@ -19,5 +20,10 @@ public class PublicServiceLot extends BuyableLot {
     @Override
     public void onOwnershipChange() {
         //TODO
+    }
+
+    @Override
+    public void addChild(BuyableTile child) {
+        this.children.add((PublicServiceTile) child);
     }
 }

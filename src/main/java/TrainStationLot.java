@@ -8,6 +8,9 @@ public class TrainStationLot extends BuyableLot {
     private ArrayList<TrainStationTile> children = new ArrayList<TrainStationTile>();
 
     ///Constructors
+
+    public TrainStationLot() {} //Default constructor
+
     public TrainStationLot(ArrayList<TrainStationTile> trainStations)
     {
         for (TrainStationTile trainStation : trainStations)
@@ -20,5 +23,10 @@ public class TrainStationLot extends BuyableLot {
     @Override
     public void onOwnershipChange() {
         //TODO
+    }
+
+    @Override
+    public void addChild(BuyableTile child) {
+        this.children.add((TrainStationTile) child);
     }
 }
