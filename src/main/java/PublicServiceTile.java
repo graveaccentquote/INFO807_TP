@@ -9,8 +9,14 @@ public class PublicServiceTile extends BuyableTile {
         this.tileName = name;
     }
 
-    ///Methods
+    public PublicServiceTile(String name, PublicServiceLot parent)
+    {
+        this.tileName = name;
+        this.lot = parent;
+        parent.addChild(this);
+    }
 
+    ///Methods
     @Override
     public void applyOnPassBy(Player player) {
         //DO NOTHING
