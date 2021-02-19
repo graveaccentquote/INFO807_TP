@@ -10,7 +10,7 @@ public class OwnedState extends SellableState {
 
     @Override
     public void build() {
-        // Can't build in this state
+        // Can't build in this state (owner doesn't own every property of the lot)
     }
 
     @Override

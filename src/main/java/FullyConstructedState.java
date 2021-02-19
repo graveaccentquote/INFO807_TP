@@ -15,7 +15,7 @@ public class FullyConstructedState extends PropertyState {
 
     @Override
     public void build() {
-
+        // Can't build anymore
     }
 
     @Override

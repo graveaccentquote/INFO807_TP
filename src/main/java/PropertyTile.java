@@ -56,6 +56,11 @@ public class PropertyTile extends BuyableTile {
         return buildingRents[0];
     }
 
+    public void addBuilding() {
+        buildingCount++;
+        lot.onBuildEvent();
+    }
+
     @Override
     public void applyOnStop(Player player) {
         state.applyOnStop(player);
@@ -63,7 +68,7 @@ public class PropertyTile extends BuyableTile {
 
     @Override
     public void applyOnPassBy(Player player) {
-        //There isn't anything to do when the player passes on a property tile
+        //There isn't anything to do when the player passes by a property tile
     }
 
     @Override
