@@ -30,7 +30,7 @@ public class Player {
         do{
             int distance = rollDiceRoutine();
             game.movePlayer(distance);
-
+            constructionRoutine();
         } while(canPlayAgain());
     }
 
@@ -43,11 +43,14 @@ public class Player {
     }
 
     public boolean displayBuyingStatus(BuyableTile tile) {
-        return false; //TODO
+        //TODO
+        return false;
     }
 
     public boolean displayBuyingProposition(BuyableTile tile) {
-        return false; //TODO
+        System.out.println("Do you want to buy \""+tile.tileName+"\" for "+tile.cost+" ? [y/n]");
+        Scanner input = new Scanner( System.in );
+        return input.nextLine().toLowerCase().startsWith("y");
     }
 
     public int rollDiceRoutine() {
@@ -81,7 +84,7 @@ public class Player {
         System.out.println("Type -1 to build on none.");
         ArrayList<PropertyTile> ownedProperties = getOwnedProperties();
         int p = input.nextInt();
-        if(p<0 || p>ownedProperties.size()){
+        if(p<0 || p>=ownedProperties.size()){
             return null;
         } else {
             return ownedProperties.get(p);
