@@ -30,14 +30,16 @@ public class MonopolyGame {
     public static void main(String[] args)
     {
         MonopolyGame game = new MonopolyGame("./gameSetup.json");
+        game.startGame();
     }
 
     ///Methods
     public void startGame() {
         //Randomize the first player :
         Random rng = new Random();
-
-        currentPlayer = players.get(rng.nextInt() % players.size());
+        int index = rng.nextInt() % players.size();
+        if(index<0) index+= players.size();
+        currentPlayer = players.get(index);
 
         currentPlayer.playTurn();
     }
@@ -70,7 +72,7 @@ public class MonopolyGame {
             }
 
             for (Object name : playerNamesList)
-                this.players.add(new Player((String) name));
+                this.players.add(new Player(this, (String) name));
             
         } catch (Exception e) {
             e.printStackTrace();

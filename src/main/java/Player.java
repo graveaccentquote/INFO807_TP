@@ -16,19 +16,19 @@ public class Player {
 
     private DiceCup diceCup;
 
-    public Player(String playerName)
+    public Player(MonopolyGame game, String playerName)
     {
         this.playerName = playerName;
         money = startingMoney;
-    }
-
-    public Player(int baseMoney){
-        money = baseMoney;
+        diceCup = new DiceCup();
+        this.game = game;
     }
 
     public void playTurn() {
+        System.out.println("--" + playerName +"'s turn --");
         do{
             int distance = rollDiceRoutine();
+            System.out.println("Rolled "+distance);
             game.movePlayer(distance);
             constructionRoutine();
         } while(canPlayAgain());
