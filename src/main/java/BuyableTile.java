@@ -19,7 +19,9 @@ public abstract class BuyableTile extends Tile {
     }
 
     protected void changeOwnership(Player player) {
+        if(owner!=null)owner.removeOwnedTile(this);
         this.owner = player;
+        if(player!=null)player.addOwnedTile(this);
         this.lot.onOwnershipChange();
     }
 

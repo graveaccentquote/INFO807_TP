@@ -65,6 +65,14 @@ public class Player {
         return diceCup.getSum();
     }
 
+    public void addOwnedTile(BuyableTile tile){
+        this.ownedTiles.add(tile);
+    }
+
+    public void removeOwnedTile(BuyableTile tile){
+        this.ownedTiles.remove(tile);
+    }
+
     private void constructionRoutine() {
         displayOwnedProperties();
         PropertyTile t = getPropertyChoice();
