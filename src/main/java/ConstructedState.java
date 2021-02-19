@@ -31,6 +31,6 @@ public class ConstructedState extends PropertyState {
 
     @Override
     public void applyOnStop(Player player) {
-
+        tile.applyRent(player);
     }
 }

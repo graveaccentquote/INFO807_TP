@@ -76,4 +76,13 @@ public class PropertyTile extends BuyableTile {
                 + "] "
                 + Arrays.toString(this.buildingRents);
     }
+
+    public void applyRent(Player player) {
+        int rentCost = (buildingRents[buildingCount])*rentMultiplier;
+        if(player.canAfford(rentCost)){
+            player.transferMoney(rentCost, player);
+        } else {
+            // TODO player loses the game
+        }
+    }
 }

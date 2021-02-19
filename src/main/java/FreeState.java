@@ -25,6 +25,6 @@ public class FreeState extends PropertyState {
 
     @Override
     public void applyOnStop(Player player) {
-        // TODO buying proposition ?
+        tile.buyRoutine(player);
     }
 }

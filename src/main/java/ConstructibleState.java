@@ -20,6 +20,6 @@ public class ConstructibleState extends SellableState {
 
     @Override
     public void applyOnStop(Player player) {
-
+        tile.applyRent(player);
     }
 }
