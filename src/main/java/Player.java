@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,21 +17,28 @@ public class Player {
 
     private DiceCup diceCup;
 
-    public Player(String playerName)
+    public Player(MonopolyGame game, String playerName)
     {
         this.playerName = playerName;
         money = startingMoney;
-    }
-
-    public Player(int baseMoney){
-        money = baseMoney;
+        diceCup = new DiceCup();
+        this.game = game;
     }
 
     public void playTurn() {
-        do{
-            int distance = rollDiceRoutine();
-            game.movePlayer(distance);
-        } while(canPlayAgain());
+        System.out.println("--" + playerName +"'s turn --");
+        System.out.println("Balance : "+money+"$");
+        playOneRoll();
+        while (canPlayAgain()){
+            System.out.println(playerName+" rolled a double and can play again !");
+            playOneRoll();
+        }
+    }
+    private void playOneRoll(){
+        int distance = rollDiceRoutine();
+        System.out.println("Rolled "+distance);
+        game.movePlayer(distance);
+        constructionRoutine();
     }
 
     public boolean canAfford(int amount) {
@@ -42,11 +50,15 @@ public class Player {
     }
 
     public boolean displayBuyingStatus(BuyableTile tile) {
-        return false; //TODO
+        //TODO
+        return false;
     }
 
     public boolean displayBuyingProposition(BuyableTile tile) {
-        return false; //TODO
+        System.out.println("Do you want to buy this tile ? [y/n]");
+        System.out.println(tile.toString());
+        Scanner input = new Scanner( System.in );
+        return input.nextLine().toLowerCase().startsWith("y");
     }
 
     public int rollDiceRoutine() {
@@ -54,11 +66,22 @@ public class Player {
         return diceCup.getSum();
     }
 
+    public void addOwnedTile(BuyableTile tile){
+        this.ownedTiles.add(tile);
+    }
+
+    public void removeOwnedTile(BuyableTile tile){
+        this.ownedTiles.remove(tile);
+    }
+
     private void constructionRoutine() {
-        displayOwnedProperties();
-        PropertyTile t = getPropertyChoice();
-        if(t!= null){
-            t.build();
+        ArrayList<PropertyTile> owned = getOwnedProperties();
+        if(owned.size()>0){
+            displayOwnedProperties(owned);
+            PropertyTile t = getPropertyChoice(owned);
+            if(t!= null){
+                t.build();
+            }
         }
     }
 
@@ -66,21 +89,20 @@ public class Player {
         return diceCup.checkDouble();
     }
 
-    private void displayOwnedProperties() {
+    private void displayOwnedProperties(ArrayList<PropertyTile> properties) {
         System.out.println("Current player's properties :");
-        ArrayList<PropertyTile> properties = getOwnedProperties();
         for(int i=0;i<properties.size();i++){
-            System.out.println(i+") "+properties.get(i).tileName);
+            PropertyTile t = properties.get(i);
+            System.out.println(i+") "+t.toBuildInfoString());
         }
     }
 
-    private PropertyTile getPropertyChoice(){
+    private PropertyTile getPropertyChoice(ArrayList<PropertyTile> ownedProperties){
         Scanner input = new Scanner( System.in );
         System.out.println("Which property do you want to build on ?");
         System.out.println("Type -1 to build on none.");
-        ArrayList<PropertyTile> ownedProperties = getOwnedProperties();
         int p = input.nextInt();
-        if(p<0 || p>ownedProperties.size()){
+        if(p<0 || p>=ownedProperties.size()){
             return null;
         } else {
             return ownedProperties.get(p);

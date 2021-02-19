@@ -17,9 +17,14 @@ public class PropertyTile extends BuyableTile {
         this.lot = lot;
         buildingCount = 0;
         tileName = name;
-        state = new FreeState();
+        //Initial state
         lot.addChild(this);
         System.arraycopy(buildingRents, 0, this.buildingRents, 0, buildingRents.length);
+        setState(new FreeState(this));
+    }
+
+    public void setState(PropertyState state){
+        this.state = state;
     }
 
     public void build() {
@@ -27,13 +32,44 @@ public class PropertyTile extends BuyableTile {
     }
 
     public void becomeConstructible() {
+        setState(new ConstructibleState(this));
     }
 
     public void becomeUnconstructible() {
+        if(getOwner()!=null){
+            setState(new OwnedState(this));
+        }
+    }
+
+    @Override
+    public void sell(Player player){
+        state.sell(player);
     }
 
     public void sellBuilding() {
         state.sellBuilding();
+    }
+
+    public int getBuildingCount() {
+        return buildingCount;
+    }
+
+    public int getSellingPrice() {
+        return buildingRents[0];
+    }
+
+    public void addBuilding() {
+        if(owner.canAfford(buildingCost)){
+            owner.debit(buildingCost);
+            buildingCount++;
+            lot.onBuildEvent();
+        }
+    }
+
+    public void sellOneBuilding() {
+        buildingCount--;
+        owner.receiveMoney(buildingCost/2);
+        lot.onBuildEvent();
     }
 
     @Override
@@ -43,7 +79,17 @@ public class PropertyTile extends BuyableTile {
 
     @Override
     public void applyOnPassBy(Player player) {
-        //TODO
+        //There isn't anything to do when the player passes by a property tile
+    }
+
+    @Override
+    protected void changeOwnership(Player player) {
+        super.changeOwnership(player);
+        state.onOwnershipChange(player);
+    }
+
+    public String toBuildInfoString(){
+        return tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
     }
 
     public String toString(){
@@ -54,5 +100,14 @@ public class PropertyTile extends BuyableTile {
                 + this.buildingCost
                 + "] "
                 + Arrays.toString(this.buildingRents);
+    }
+
+    public void applyRent(Player player) {
+        int rentCost = (buildingRents[buildingCount])*rentMultiplier;
+        if(player.canAfford(rentCost)){
+            player.transferMoney(rentCost, player);
+        } else {
+            // TODO player loses the game
+        }
     }
 }

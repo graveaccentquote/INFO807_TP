@@ -1,12 +1,18 @@
 public abstract class PropertyState {
+    protected PropertyTile tile;
 
-    public void build() {
+    public PropertyState(PropertyTile tile){
+        this.tile = tile;
     }
 
-    public void sellBuilding() {
-    }
+    public abstract void onOwnershipChange(Player player);
 
-    public void applyOnStop(Player player) {
-    }
+    public abstract void sell(Player player);
+
+    public abstract void build();
+
+    public abstract void sellBuilding();
+
+    public abstract void applyOnStop(Player player);
 
 }

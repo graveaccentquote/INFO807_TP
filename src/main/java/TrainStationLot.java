@@ -45,5 +45,6 @@ public class TrainStationLot extends BuyableLot {
     @Override
     public void addChild(BuyableTile child) {
         this.children.add((TrainStationTile) child);
+        child.setParent(this);
     }
 }

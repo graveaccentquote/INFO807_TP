@@ -15,11 +15,13 @@ public abstract class BuyableTile extends Tile {
 
     ///Methods
 
-    public void Sell(Player buyer) {
+    public void sell(Player buyer) {
     }
 
-    private void changeOwnership(Player player) {
+    protected void changeOwnership(Player player) {
+        if(owner!=null)owner.removeOwnedTile(this);
         this.owner = player;
+        if(player!=null)player.addOwnedTile(this);
         this.lot.onOwnershipChange();
     }
 
@@ -43,7 +45,6 @@ public abstract class BuyableTile extends Tile {
             //Player doesn't have enough money to buy the tile, display status and abort
             player.displayBuyingStatus(this);
         }
-
     }
 
     public void setRentMultiplier(int multiplier) {
