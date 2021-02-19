@@ -4,27 +4,27 @@ public class FullyConstructedState extends PropertyState {
     }
 
     @Override
-    public void OnOwnershipChange(Player player) {
+    public void onOwnershipChange(Player player) {
 
     }
 
     @Override
-    public void Sell(Player player) {
+    public void sell(Player player) {
 
     }
 
     @Override
-    public void Build() {
+    public void build() {
 
     }
 
     @Override
-    public void SellBuilding() {
+    public void sellBuilding() {
         tile.SetState(new ConstructedState(tile));
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
 
     }
 }

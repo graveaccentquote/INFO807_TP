@@ -26,59 +26,59 @@ public class Player {
         money = baseMoney;
     }
 
-    public void PlayTurn() {
+    public void playTurn() {
         do{
-            int distance = RollDiceRoutine();
-            game.MovePlayer(distance);
-        } while(CanPlayAgain());
+            int distance = rollDiceRoutine();
+            game.movePlayer(distance);
+        } while(canPlayAgain());
     }
 
-    public boolean CanAfford(int amount) {
+    public boolean canAfford(int amount) {
         return money>=amount;
     }
 
-    public void Debit(int amount) {
+    public void debit(int amount) {
         money-=amount;
     }
 
-    public boolean DisplayBuyingStatus(BuyableTile tile) {
+    public boolean displayBuyingStatus(BuyableTile tile) {
         return false; //TODO
     }
 
-    public boolean DisplayBuyingProposition(BuyableTile tile) {
+    public boolean displayBuyingProposition(BuyableTile tile) {
         return false; //TODO
     }
 
-    public int RollDiceRoutine() {
-        diceCup.RollDice();
-        return diceCup.GetSum();
+    public int rollDiceRoutine() {
+        diceCup.rollDice();
+        return diceCup.getSum();
     }
 
-    private void ConstructionRoutine() {
-        DisplayOwnedProperties();
-        PropertyTile t = GetPropertyChoice();
+    private void constructionRoutine() {
+        displayOwnedProperties();
+        PropertyTile t = getPropertyChoice();
         if(t!= null){
-            t.Build();
+            t.build();
         }
     }
 
-    private boolean CanPlayAgain() {
-        return diceCup.CheckDouble();
+    private boolean canPlayAgain() {
+        return diceCup.checkDouble();
     }
 
-    private void DisplayOwnedProperties() {
+    private void displayOwnedProperties() {
         System.out.println("Current player's properties :");
-        ArrayList<PropertyTile> properties = GetOwnedProperties();
+        ArrayList<PropertyTile> properties = getOwnedProperties();
         for(int i=0;i<properties.size();i++){
             System.out.println(i+") "+properties.get(i).tileName);
         }
     }
 
-    private PropertyTile GetPropertyChoice(){
+    private PropertyTile getPropertyChoice(){
         Scanner input = new Scanner( System.in );
         System.out.println("Which property do you want to build on ?");
         System.out.println("Type -1 to build on none.");
-        ArrayList<PropertyTile> ownedProperties = GetOwnedProperties();
+        ArrayList<PropertyTile> ownedProperties = getOwnedProperties();
         int p = input.nextInt();
         if(p<0 || p>ownedProperties.size()){
             return null;
@@ -87,31 +87,35 @@ public class Player {
         }
     }
 
-    private ArrayList<PropertyTile> GetOwnedProperties(){
+    private ArrayList<PropertyTile> getOwnedProperties(){
         ArrayList<PropertyTile> res = new ArrayList<PropertyTile>();
         for(BuyableTile tile : ownedTiles){
             if(tile instanceof PropertyTile){
-                res.add((PropertyTile)tile);
+                res.add((PropertyTile) tile);
             }
         }
         return res;
     }
 
-    public void TransferMoney(int amount, Player player) {
-        this.Debit(amount);
-        player.ReceiveMoney(amount);
+    public void transferMoney(int amount, Player player) {
+        this.debit(amount);
+        player.receiveMoney(amount);
     }
 
-    public void ReceiveMoney(int amount) {
+    public void receiveMoney(int amount) {
         money+= amount;
     }
 
-    public int GetMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public int GetDiceSum() {
-        return diceCup.GetSum();
+    public int getDiceSum() {
+        return diceCup.getSum();
     }
 
+    public String toString()
+    {
+        return this.playerName;
+    }
 }

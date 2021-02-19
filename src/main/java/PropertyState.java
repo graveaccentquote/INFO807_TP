@@ -5,14 +5,14 @@ public abstract class PropertyState {
         this.tile = tile;
     }
 
-    public abstract void OnOwnershipChange(Player player);
+    public abstract void onOwnershipChange(Player player);
 
-    public abstract void Sell(Player player);
+    public abstract void sell(Player player);
 
-    public abstract void Build();
+    public abstract void build();
 
-    public abstract void SellBuilding();
+    public abstract void sellBuilding();
 
-    public abstract void ApplyOnStop(Player player);
+    public abstract void applyOnStop(Player player);
 
 }

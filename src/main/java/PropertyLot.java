@@ -2,21 +2,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PropertyLot extends BuyableLot {
-    public int maxBuildingCount;
 
+    ///Attributes
+    public int maxBuildingCount;
     public int minBuildingCount;
 
+    //List of children of this lot
     public List<PropertyTile> children = new ArrayList<PropertyTile> ();
 
-    public void OnBuildEvent() {
+    ///Constructors
+    public PropertyLot(){} //Default constructor
+
+    ///Methods
+    public void onBuildEvent() {
     }
 
-    public boolean IsValidBuildingCount(int buildingCount) {
+    public boolean isValidBuildingCount(int buildingCount) {
         return false; //TODO
     }
 
     @Override
-    public void OnOwnershipChange() {
+    public void onOwnershipChange() {
 
+    }
+
+    @Override
+    public void addChild(BuyableTile child) {
+        this.children.add((PropertyTile) child);
     }
 }

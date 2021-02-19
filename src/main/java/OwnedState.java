@@ -4,25 +4,25 @@ public class OwnedState extends SellableState {
     }
 
     @Override
-    public void OnOwnershipChange(Player player) {
+    public void onOwnershipChange(Player player) {
         // Nothing to do in this state
     }
 
     @Override
-    public void Build() {
+    public void build() {
         // Can't build in this state
     }
 
     @Override
-    public void SellBuilding() {
+    public void sellBuilding() {
         // Can't sell a building in this state
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
         int rentCost = tile.GetRentCost();
-        if(player.CanAfford(rentCost)){
-            player.TransferMoney(rentCost, player);
+        if(player.canAfford(rentCost)){
+            player.transferMoney(rentCost, player);
         } else {
             // TODO player loses the game
         }

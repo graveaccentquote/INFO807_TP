@@ -12,21 +12,21 @@ public class DiceCup {
         }
     }
 
-    public void RollDice() {
+    public void rollDice() {
         for (Dice d : dice) {
-            d.Roll();
+            d.roll();
         }
     }
 
-    public boolean CheckDouble() {
+    public boolean checkDouble() {
         if(dice.size()<2) return false;
-        return dice.get(0).GetValue() == dice.get(1).GetValue();
+        return dice.get(0).getValue() == dice.get(1).getValue();
     }
 
-    public int GetSum() {
+    public int getSum() {
         int sum = 0;
         for(Dice d : dice){
-            sum += d.GetValue();
+            sum += d.getValue();
         }
         return sum;
     }

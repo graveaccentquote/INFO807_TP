@@ -4,22 +4,22 @@ public class ConstructibleState extends SellableState {
     }
 
     @Override
-    public void OnOwnershipChange(Player player) {
+    public void onOwnershipChange(Player player) {
 
     }
 
     @Override
-    public void Build() {
+    public void build() {
         tile.SetState(new ConstructedState(tile));
     }
 
     @Override
-    public void SellBuilding() {
+    public void sellBuilding() {
 
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
 
     }
 }

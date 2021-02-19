@@ -1,0 +1,249 @@
+{
+  "players": ["Theo", "Luc", "Paul"],
+  "board": {
+    "propertyLots": ["purple", "lightBlue", "pink", "orange", "red", "yellow", "green", "darkBlue"],
+    "tiles": [
+      { "type": "StartTile"},
+      { "type": "PropertyTile",
+        "name": "Mediterranean Avenue",
+        "parent": "purple",
+        "buyingCost": "60",
+        "constructionCost": "50",
+        "rents": [
+          "2", "10", "30", "90", "160", "250"
+        ]
+      },
+      { "type": "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Baltic Avenue",
+        "parent": "purple",
+        "buyingCost": "60",
+        "constructionCost": "50",
+        "rents": [
+          "4", "20", "60", "180", "320", "450"
+        ]
+      },
+      { "type": "IncomeTaxTile"},
+      { "type": "TrainStationTile",
+        "name": "Reading Railroad",
+        "buyingCost":  "200"
+      },
+      { "type": "PropertyTile",
+        "name": "Oriental Avenue",
+        "parent": "lightBlue",
+        "buyingCost": "100",
+        "constructionCost": "50",
+        "rents": [
+          "6", "30", "90", "270", "400", "550"
+        ]
+      },
+      { "type": "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Vermont Avenue",
+        "parent": "purple",
+        "buyingCost": "100",
+        "constructionCost": "50",
+        "rents": [
+          "6", "30", "90", "270", "400", "550"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "Connecticut Avenue",
+        "parent": "purple",
+        "buyingCost": "120",
+        "constructionCost": "50",
+        "rents": [
+          "8", "40", "100", "380", "450", "600"
+        ]
+      },
+      { "type": "JailTile"},
+      { "type": "PropertyTile",
+        "name": "St. Charles Place",
+        "parent": "pink",
+        "buyingCost": "140",
+        "constructionCost": "100",
+        "rents": [
+          "10", "50", "150", "450", "625", "750"
+        ]
+      },
+      {
+        "type": "PublicServiceTile",
+        "name": "Electric Company",
+        "buyingCost": "150"
+      },
+      { "type": "PropertyTile",
+        "name": "States Avenue",
+        "parent": "pink",
+        "buyingCost": "140",
+        "constructionCost": "100",
+        "rents": [
+          "10", "50", "150", "450", "625", "750"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "Virginia Avenue",
+        "parent": "pink",
+        "buyingCost": "160",
+        "constructionCost": "100",
+        "rents": [
+          "12", "60", "180", "500", "700", "900"
+        ]
+      },
+      { "type": "TrainStationTile",
+        "name": "Pennsylvania Railroad",
+        "buyingCost":  "200"
+      },
+      { "type": "PropertyTile",
+        "name": "St James Place",
+        "parent": "orange",
+        "buyingCost": "180",
+        "constructionCost": "100",
+        "rents": [
+          "14", "70", "200", "550", "750", "950"
+        ]
+      },
+      { "type": "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Tennessee Avenue",
+        "parent": "orange",
+        "buyingCost": "180",
+        "constructionCost": "100",
+        "rents": [
+          "14", "70", "200", "550", "750", "950"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "New York Avenue",
+        "parent": "orange",
+        "buyingCost": "180",
+        "constructionCost": "100",
+        "rents": [
+          "16", "80", "220", "600", "800", "1000"
+        ]
+      },
+      { "type":  "ParkTile"},
+      { "type": "PropertyTile",
+        "name": "Kentucky Avenue",
+        "parent": "red",
+        "buyingCost": "220",
+        "constructionCost": "150",
+        "rents": [
+          "18", "90", "250", "700", "875", "1050"
+        ]
+      },
+      { "type": "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Indiana Avenue",
+        "parent": "red",
+        "buyingCost": "220",
+        "constructionCost": "150",
+        "rents": [
+          "18", "90", "250", "700", "875", "1050"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "Illinois Avenue",
+        "parent": "red",
+        "buyingCost": "240",
+        "constructionCost": "150",
+        "rents": [
+          "20", "100", "300", "750", "925", "1100"
+        ]
+      },
+      { "type": "TrainStationTile",
+        "name": "B & O Railroad",
+        "buyingCost":  "200"
+      },
+      { "type": "PropertyTile",
+        "name": "Atlantic Avenue",
+        "parent": "yellow",
+        "buyingCost": "260",
+        "constructionCost": "150",
+        "rents": [
+          "22", "110", "330", "800", "975", "1150"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "Ventnor Avenue",
+        "parent": "yellow",
+        "buyingCost": "260",
+        "constructionCost": "150",
+        "rents": [
+          "22", "110", "330", "800", "975", "1150"
+        ]
+      },
+      {
+        "type": "PublicServiceTile",
+        "name": "Water Works",
+        "buyingCost": "150"
+      },
+      { "type": "PropertyTile",
+        "name": "Marvin Gardens",
+        "parent": "yellow",
+        "buyingCost": "260",
+        "constructionCost": "150",
+        "rents": [
+          "24", "120", "360", "850", "1025", "1200"
+        ]
+      },
+      { "type":  "GoToJailTile"},
+      { "type": "PropertyTile",
+        "name": "Pacific Avenue",
+        "parent": "green",
+        "buyingCost": "300",
+        "constructionCost": "200",
+        "rents": [
+          "26", "130", "390", "900", "1100", "1275"
+        ]
+      },
+      { "type": "PropertyTile",
+        "name": "North Carolina Avenue",
+        "parent": "green",
+        "buyingCost": "300",
+        "constructionCost": "200",
+        "rents": [
+          "26", "130", "390", "900", "1100", "1275"
+        ]
+      },
+      { "type":  "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Pennsylvania Avenue",
+        "parent": "green",
+        "buyingCost": "320",
+        "constructionCost": "200",
+        "rents": [
+          "28", "150", "450", "1000", "1200", "1400"
+        ]
+      },
+      { "type": "TrainStationTile",
+        "name": "Short Line",
+        "buyingCost":  "200"
+      },
+      { "type":  "DrawCardTile"},
+      { "type": "PropertyTile",
+        "name": "Park Place",
+        "parent": "darkBlue",
+        "buyingCost": "350",
+        "constructionCost": "200",
+        "rents": [
+          "35", "175", "500", "1100", "1300", "1500"
+        ]
+      },
+      { "type": "LuxuryTaxTile"},
+      { "type": "PropertyTile",
+        "name": "Board Walk",
+        "parent": "darkBlue",
+        "buyingCost": "400",
+        "constructionCost": "200",
+        "rents": [
+          "50", "200", "600", "1400", "1700", "2000"
+        ]
+      }
+    ]
+  }
+
+
+
+
+
+}

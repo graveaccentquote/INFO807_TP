@@ -8,7 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
-import java.util.Iterator;
 
 public class MonopolyGame {
 
@@ -21,69 +20,64 @@ public class MonopolyGame {
     public ArrayList<Player> players = new ArrayList<Player> ();
 
     ///Constructors
-    public MonopolyGame ()
+    public MonopolyGame (String fileName)
     {
-        Player Tom = new Player("Tom");
-        Player Hugo = new Player("Hugo");
-        Player Theo = new Player("Theo");
-
-        players.add(Tom);
-        players.add(Hugo);
-        players.add(Theo);
-
-        board = new Board(players);
-    }
-
-    public MonopolyGame (String filepath)
-    {
-        this.parseJSON();
+        this.parseJSON(fileName);
+        this.board = new Board(fileName, players);
     }
 
     ///Main
     public static void main(String[] args)
     {
-
-        MonopolyGame game = new MonopolyGame("test");
-
+        MonopolyGame game = new MonopolyGame("./gameSetup.json");
     }
 
     ///Methods
-    public void StartGame() {
+    public void startGame() {
         //Randomize the first player :
         Random rng = new Random();
 
         currentPlayer = players.get(rng.nextInt() % players.size());
 
-        currentPlayer.PlayTurn();
+        currentPlayer.playTurn();
     }
 
-    public void MovePlayer(int tileCount) {
-        board.MovePlayer(currentPlayer, tileCount);
+    public void movePlayer(int tileCount) {
+        board.movePlayer(currentPlayer, tileCount);
     }
 
-    private void parseJSON()
+    private void parseJSON(String fileName)
     {
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader("./boardSetup.json"));
+            Object obj = parser.parse(new FileReader(fileName));
 
             // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
             JSONObject jsonObject = (JSONObject) obj;
 
             // A JSON array. JSONObject supports java.util.List interface.
-            JSONArray playerNamesList = (JSONArray) jsonObject.get("PlayerNames");
+            JSONArray playerNamesList = (JSONArray) jsonObject.get("players");
 
             // An iterator over a collection. Iterator takes the place of Enumeration in the Java Collections Framework.
             // Iterators differ from enumerations in two ways:
             // 1. Iterators allow the caller to remove elements from the underlying collection during the iteration with well-defined semantics.
             // 2. Method names have been improved.
-            Iterator<JSONObject> iterator = playerNamesList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
+
+            if (playerNamesList == null)
+            {
+                System.err.println("Error in JSON file trying to read player names");
+                throw new Exception();
             }
+
+            for (Object name : playerNamesList)
+                this.players.add(new Player((String) name));
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
 
 }

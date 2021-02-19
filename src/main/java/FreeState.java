@@ -4,27 +4,27 @@ public class FreeState extends PropertyState {
     }
 
     @Override
-    public void OnOwnershipChange(Player player) {
+    public void onOwnershipChange(Player player) {
         tile.SetState(new OwnedState(tile));
     }
 
     @Override
-    public void Sell(Player player) {
+    public void sell(Player player) {
         // Can't be selled if already free
     }
 
     @Override
-    public void Build() {
+    public void build() {
         // Can't be built on if free
     }
 
     @Override
-    public void SellBuilding() {
+    public void sellBuilding() {
         // Doesn't have any building when free
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
         // TODO buying proposition ?
     }
 }

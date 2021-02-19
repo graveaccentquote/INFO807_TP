@@ -4,15 +4,15 @@ public abstract class SellableState extends PropertyState {
     }
 
     @Override
-    public void Sell(Player player) {
+    public void sell(Player player) {
         if(player == null){
-            tile.owner.ReceiveMoney(tile.GetSellingPrice());
-            tile.ChangeOwnership(null);
+            tile.owner.receiveMoney(tile.GetSellingPrice());
+            tile.changeOwnership(null);
             tile.SetState(new FreeState(tile));
         } else {
-            if(player.CanAfford(tile.GetSellingPrice())){
-                player.TransferMoney(tile.GetSellingPrice(), tile.owner);
-                tile.ChangeOwnership(player);
+            if(player.canAfford(tile.GetSellingPrice())){
+                player.transferMoney(tile.GetSellingPrice(), tile.owner);
+                tile.changeOwnership(player);
             }
         }
     }

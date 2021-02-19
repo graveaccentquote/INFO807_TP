@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class PropertyTile extends BuyableTile {
     private int buildingCount;
 
-    private int[] buildingRents;
+    private int[] buildingRents = new int[6];
 
     private int buildingCost;
 
@@ -12,11 +14,12 @@ public class PropertyTile extends BuyableTile {
     public PropertyTile(String name, PropertyLot lot, int buyingCost, int buildingCost, int[] buildingRents){
         this.cost = buyingCost;
         this.buildingCost = buildingCost;
-        this.buildingRents = buildingRents;
         this.lot = lot;
         buildingCount = 0;
         tileName = name;
         //Initial state
+        lot.addChild(this);
+        System.arraycopy(buildingRents, 0, this.buildingRents, 0, buildingRents.length);
         SetState(new FreeState(this));
     }
 
@@ -24,41 +27,38 @@ public class PropertyTile extends BuyableTile {
         this.state = state;
     }
 
-    public void Build() {
-        state.Build();
+    public void build() {
+        state.build();
     }
 
-    public void BecomeConstructible() {
-        SetState(new ConstructibleState(this));
+    public void becomeConstructible() {
     }
 
-    public void BecomeUnconstructible() {
-        SetState(new OwnedState(this));
+    public void becomeUnconstructible() {
     }
 
-    // Sells the property to a player
-    public void Sell(Player player){
-        state.Sell(player);
+    public void sell(Player player){
+        state.sell(player);
     }
 
-    public void SellBuilding() {
-        state.SellBuilding();
+    public void sellBuilding() {
+        state.sellBuilding();
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
-        state.ApplyOnStop(player);
+    public void applyOnStop(Player player) {
+        state.applyOnStop(player);
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //TODO
     }
 
     @Override
-    protected void ChangeOwnership(Player player) {
-        super.ChangeOwnership(player);
-        state.OnOwnershipChange(player);
+    protected void changeOwnership(Player player) {
+        super.changeOwnership(player);
+        state.onOwnershipChange(player);
     }
 
     public int GetBuildingCount() {
@@ -77,5 +77,15 @@ public class PropertyTile extends BuyableTile {
         int baseRent = rent * rentMultiplier;
         int buildingRent = buildingRents[buildingCount]; // TODO 0 buildings ?
         return  baseRent + buildingRent;
+    }
+
+    public String toString(){
+        return this.tileName
+                + " ["
+                + this.cost
+                + " / "
+                + this.buildingCost
+                + "] "
+                + Arrays.toString(this.buildingRents);
     }
 }
