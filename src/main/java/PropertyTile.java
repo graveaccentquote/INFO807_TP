@@ -57,7 +57,16 @@ public class PropertyTile extends BuyableTile {
     }
 
     public void addBuilding() {
-        buildingCount++;
+        if(owner.canAfford(buildingCost)){
+            owner.debit(buildingCost);
+            buildingCount++;
+            lot.onBuildEvent();
+        }
+    }
+
+    public void sellOneBuilding() {
+        buildingCount--;
+        owner.receiveMoney(buildingCost/2);
         lot.onBuildEvent();
     }
 

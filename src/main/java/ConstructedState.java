@@ -30,6 +30,7 @@ public class ConstructedState extends PropertyState {
         if(count==1){
             tile.setState(new ConstructibleState(tile));
         }
+        tile.sellOneBuilding();
     }
 
     @Override

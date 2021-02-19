@@ -17,7 +17,7 @@ public class ConstructibleState extends SellableState {
 
     @Override
     public void sellBuilding() {
-
+        // Doesn't have any building when constructible
     }
 
     @Override

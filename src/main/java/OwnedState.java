@@ -15,7 +15,7 @@ public class OwnedState extends SellableState {
 
     @Override
     public void sellBuilding() {
-        // Can't sell a building in this state
+        // There aren't any building to sell in this state
     }
 
     @Override
