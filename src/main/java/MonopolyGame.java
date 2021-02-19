@@ -30,7 +30,6 @@ public class MonopolyGame {
     public static void main(String[] args)
     {
         MonopolyGame game = new MonopolyGame("./gameSetup.json");
-        game.startGame();
     }
 
     ///Methods
