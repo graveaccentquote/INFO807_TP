@@ -10,11 +10,11 @@ public class Dice {
         rdm = new Random();
     }
 
-    public void Roll() {
+    public void roll() {
         value = rdm.nextInt(MAX-MIN+1)+MIN;
     }
 
-    public int GetValue() {
+    public int getValue() {
         return value;
     }
 }

@@ -6,31 +6,40 @@ public class TrainStationTile extends BuyableTile {
     public TrainStationLot lot;
 
     ///Constructors
-    public TrainStationTile(String name)
+    public TrainStationTile(String name, int buyingCost)
     {
-
         this.tileName = name;
         this.rent = trainStationRent;
+        this.cost = buyingCost;
+    }
+
+    public TrainStationTile(String name, int buyingCost, TrainStationLot parent)
+    {
+        this.tileName = name;
+        this.rent = trainStationRent;
+        this.cost = buyingCost;
+        this.lot = parent;
+        parent.addChild(this);
     }
 
     ///Methods
-    public void SetParent(TrainStationLot parent) {
+    public void setParent(TrainStationLot parent) {
         lot = parent;
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //DO NOTHING
     }
 
     @Override
-    public void ApplyOnStop(Player player) {
-        if (!this.IsFree()){
+    public void applyOnStop(Player player) {
+        if (!this.isFree()){
             //Make the player pay the tax
             int tax = this.rent * this.rentMultiplier;
-            player.TransferMoney(tax, this.owner);
+            player.transferMoney(tax, this.owner);
         }
         else
-            this.BuyRoutine(player);
+            this.buyRoutine(player);
     }
 }

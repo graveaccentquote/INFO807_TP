@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class PropertyTile extends BuyableTile {
     private int buildingCount;
 
-    private int[] buildingRents;
+    private int[] buildingRents = new int[6];
 
     private int buildingCost;
 
@@ -12,34 +14,45 @@ public class PropertyTile extends BuyableTile {
     public PropertyTile(String name, PropertyLot lot, int buyingCost, int buildingCost, int[] buildingRents){
         this.cost = buyingCost;
         this.buildingCost = buildingCost;
-        this.buildingRents = buildingRents;
         this.lot = lot;
         buildingCount = 0;
         tileName = name;
         state = new FreeState();
+        lot.addChild(this);
+        System.arraycopy(buildingRents, 0, this.buildingRents, 0, buildingRents.length);
     }
 
-    public void Build() {
-        state.Build();
+    public void build() {
+        state.build();
     }
 
-    public void BecomeConstructible() {
+    public void becomeConstructible() {
     }
 
-    public void BecomeUnconstructible() {
+    public void becomeUnconstructible() {
     }
 
-    public void SellBuilding() {
-        state.SellBuilding();
-    }
-
-    @Override
-    public void ApplyOnStop(Player player) {
-        state.ApplyOnStop(player);
+    public void sellBuilding() {
+        state.sellBuilding();
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnStop(Player player) {
+        state.applyOnStop(player);
+    }
+
+    @Override
+    public void applyOnPassBy(Player player) {
         //TODO
+    }
+
+    public String toString(){
+        return this.tileName
+                + " ["
+                + this.cost
+                + " / "
+                + this.buildingCost
+                + "] "
+                + Arrays.toString(this.buildingRents);
     }
 }

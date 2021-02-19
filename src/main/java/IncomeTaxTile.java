@@ -13,14 +13,14 @@ public class IncomeTaxTile extends Tile {
 
     ///Methods
     @Override
-    public void ApplyOnStop(Player player) {
+    public void applyOnStop(Player player) {
         //Pay taxRatio * money or minTax, whichever is greater
-        int tax = (int) Math.floor((player.GetMoney() * this.taxRatio));
-        player.Debit(Math.max(minTax, tax));
+        int tax = (int) Math.floor((player.getMoney() * this.taxRatio));
+        player.debit(Math.max(minTax, tax));
     }
 
     @Override
-    public void ApplyOnPassBy(Player player) {
+    public void applyOnPassBy(Player player) {
         //DO NOTHING
     }
 }
