@@ -5,7 +5,7 @@ public class ConstructedState extends PropertyState {
 
     @Override
     public void onOwnershipChange(Player player) {
-
+        // ownership can't change in the constructed state
     }
 
     @Override

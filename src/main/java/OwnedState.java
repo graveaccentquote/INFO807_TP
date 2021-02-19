@@ -5,7 +5,7 @@ public class OwnedState extends SellableState {
 
     @Override
     public void onOwnershipChange(Player player) {
-        // Nothing to do in this state
+        // There isn't anything to do when the ownership changes in this state
     }
 
     @Override
