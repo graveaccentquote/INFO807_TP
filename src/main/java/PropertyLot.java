@@ -74,5 +74,6 @@ public class PropertyLot extends BuyableLot {
     @Override
     public void addChild(BuyableTile child) {
         this.children.add((PropertyTile) child);
+        child.setParent(this);
     }
 }

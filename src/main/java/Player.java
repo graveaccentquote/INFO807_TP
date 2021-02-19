@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,12 +27,17 @@ public class Player {
 
     public void playTurn() {
         System.out.println("--" + playerName +"'s turn --");
-        do{
-            int distance = rollDiceRoutine();
-            System.out.println("Rolled "+distance);
-            game.movePlayer(distance);
-            constructionRoutine();
-        } while(canPlayAgain());
+        playOneRoll();
+        while (canPlayAgain()){
+            System.out.println(playerName+" rolled a double and can play again !");
+            playOneRoll();
+        }
+    }
+    private void playOneRoll(){
+        int distance = rollDiceRoutine();
+        System.out.println("Rolled "+distance);
+        game.movePlayer(distance);
+        constructionRoutine();
     }
 
     public boolean canAfford(int amount) {
@@ -48,7 +54,8 @@ public class Player {
     }
 
     public boolean displayBuyingProposition(BuyableTile tile) {
-        System.out.println("Do you want to buy \""+tile.tileName+"\" for "+tile.cost+" ? [y/n]");
+        System.out.println("Do you want to buy this tile ? [y/n]");
+        System.out.println(tile.toString());
         Scanner input = new Scanner( System.in );
         return input.nextLine().toLowerCase().startsWith("y");
     }
