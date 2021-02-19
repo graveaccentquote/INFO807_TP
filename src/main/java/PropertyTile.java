@@ -36,7 +36,9 @@ public class PropertyTile extends BuyableTile {
     }
 
     public void becomeUnconstructible() {
-        setState(new OwnedState(this));
+        if(getOwner()!=null){
+            setState(new OwnedState(this));
+        }
     }
 
     @Override

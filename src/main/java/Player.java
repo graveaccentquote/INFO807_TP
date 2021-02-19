@@ -75,10 +75,13 @@ public class Player {
     }
 
     private void constructionRoutine() {
-        displayOwnedProperties();
-        PropertyTile t = getPropertyChoice();
-        if(t!= null){
-            t.build();
+        ArrayList<PropertyTile> owned = getOwnedProperties();
+        if(owned.size()>0){
+            displayOwnedProperties(owned);
+            PropertyTile t = getPropertyChoice(owned);
+            if(t!= null){
+                t.build();
+            }
         }
     }
 
@@ -86,20 +89,18 @@ public class Player {
         return diceCup.checkDouble();
     }
 
-    private void displayOwnedProperties() {
+    private void displayOwnedProperties(ArrayList<PropertyTile> properties) {
         System.out.println("Current player's properties :");
-        ArrayList<PropertyTile> properties = getOwnedProperties();
         for(int i=0;i<properties.size();i++){
             PropertyTile t = properties.get(i);
             System.out.println(i+") "+t.toBuildInfoString());
         }
     }
 
-    private PropertyTile getPropertyChoice(){
+    private PropertyTile getPropertyChoice(ArrayList<PropertyTile> ownedProperties){
         Scanner input = new Scanner( System.in );
         System.out.println("Which property do you want to build on ?");
         System.out.println("Type -1 to build on none.");
-        ArrayList<PropertyTile> ownedProperties = getOwnedProperties();
         int p = input.nextInt();
         if(p<0 || p>=ownedProperties.size()){
             return null;
