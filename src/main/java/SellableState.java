@@ -7,7 +7,7 @@ public abstract class SellableState extends PropertyState {
     public void sell(Player player) {
         if(player == null){
             // TODO change ownership and transfer money
-            tile.SetState(new FreeState(tile));
+            tile.setState(new FreeState(tile));
         } else {
             if(false){//TODO check if buyer can afford
                 // TODO change ownership and transfer money

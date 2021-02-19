@@ -20,10 +20,10 @@ public class PropertyTile extends BuyableTile {
         //Initial state
         lot.addChild(this);
         System.arraycopy(buildingRents, 0, this.buildingRents, 0, buildingRents.length);
-        SetState(new FreeState(this));
+        setState(new FreeState(this));
     }
 
-    public void SetState(PropertyState state){
+    public void setState(PropertyState state){
         this.state = state;
     }
 
@@ -32,9 +32,11 @@ public class PropertyTile extends BuyableTile {
     }
 
     public void becomeConstructible() {
+        setState(new ConstructibleState(this));
     }
 
     public void becomeUnconstructible() {
+        setState(new OwnedState(this));
     }
 
     public void sell(Player player){
@@ -43,6 +45,10 @@ public class PropertyTile extends BuyableTile {
 
     public void sellBuilding() {
         state.sellBuilding();
+    }
+
+    public int getBuildingCount() {
+        return buildingCount;
     }
 
     @Override
@@ -59,10 +65,6 @@ public class PropertyTile extends BuyableTile {
     protected void changeOwnership(Player player) {
         super.changeOwnership(player);
         state.onOwnershipChange(player);
-    }
-
-    public int getBuildingCount() {
-        return buildingCount;
     }
 
     public String toString(){

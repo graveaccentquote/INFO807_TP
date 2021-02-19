@@ -17,7 +17,7 @@ public class ConstructedState extends PropertyState {
     public void build() {
         int count = tile.getBuildingCount();
         if(count==4){
-            tile.SetState(new FullyConstructedState(tile));
+            tile.setState(new FullyConstructedState(tile));
         }
     }
 
@@ -25,7 +25,7 @@ public class ConstructedState extends PropertyState {
     public void sellBuilding() {
         int count = tile.getBuildingCount();
         if(count==1){
-            tile.SetState(new ConstructibleState(tile));
+            tile.setState(new ConstructibleState(tile));
         }
     }
 

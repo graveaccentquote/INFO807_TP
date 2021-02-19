@@ -30,6 +30,7 @@ public class Player {
         do{
             int distance = rollDiceRoutine();
             game.movePlayer(distance);
+
         } while(canPlayAgain());
     }
 

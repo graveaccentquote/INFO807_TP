@@ -10,7 +10,7 @@ public class ConstructibleState extends SellableState {
 
     @Override
     public void build() {
-        tile.SetState(new ConstructedState(tile));
+        tile.setState(new ConstructedState(tile));
     }
 
     @Override

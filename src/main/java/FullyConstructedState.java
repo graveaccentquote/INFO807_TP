@@ -20,7 +20,7 @@ public class FullyConstructedState extends PropertyState {
 
     @Override
     public void sellBuilding() {
-        tile.SetState(new ConstructedState(tile));
+        tile.setState(new ConstructedState(tile));
     }
 
     @Override

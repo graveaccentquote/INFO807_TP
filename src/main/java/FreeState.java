@@ -5,7 +5,7 @@ public class FreeState extends PropertyState {
 
     @Override
     public void onOwnershipChange(Player player) {
-        tile.SetState(new OwnedState(tile));
+        tile.setState(new OwnedState(tile));
     }
 
     @Override
