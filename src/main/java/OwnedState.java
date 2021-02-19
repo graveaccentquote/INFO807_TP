@@ -20,7 +20,7 @@ public class OwnedState extends SellableState {
 
     @Override
     public void applyOnStop(Player player) {
-        int rentCost = tile.GetRentCost();
+        int rentCost = 0;//TODO
         if(player.canAfford(rentCost)){
             player.transferMoney(rentCost, player);
         } else {

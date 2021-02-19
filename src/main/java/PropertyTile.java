@@ -52,7 +52,7 @@ public class PropertyTile extends BuyableTile {
 
     @Override
     public void applyOnPassBy(Player player) {
-        //TODO
+        //There isn't anything to do when the player passes on a property tile
     }
 
     @Override
@@ -61,22 +61,8 @@ public class PropertyTile extends BuyableTile {
         state.onOwnershipChange(player);
     }
 
-    public int GetBuildingCount() {
+    public int getBuildingCount() {
         return buildingCount;
-    }
-
-    public void SetBuildingCount(int count) {
-        buildingCount = count;
-    }
-
-    public int GetSellingPrice(){
-        return cost/2;
-    }
-
-    public int GetRentCost(){
-        int baseRent = rent * rentMultiplier;
-        int buildingRent = buildingRents[buildingCount]; // TODO 0 buildings ?
-        return  baseRent + buildingRent;
     }
 
     public String toString(){
