@@ -10,7 +10,7 @@ public class FullyConstructedState extends PropertyState {
 
     @Override
     public void sell(Player player) {
-
+        // Can't be sold if there are buildings left on the property
     }
 
     @Override

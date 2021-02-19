@@ -5,12 +5,15 @@ public abstract class SellableState extends PropertyState {
 
     @Override
     public void sell(Player player) {
+        int price = tile.getSellingPrice();
         if(player == null){
-            // TODO change ownership and transfer money
+            tile.owner.receiveMoney(price);
+            tile.changeOwnership(null);
             tile.setState(new FreeState(tile));
         } else {
-            if(false){//TODO check if buyer can afford
-                // TODO change ownership and transfer money
+            if(player.canAfford(price)){
+                player.transferMoney(price, tile.owner);
+                tile.changeOwnership(player);
             }
         }
     }

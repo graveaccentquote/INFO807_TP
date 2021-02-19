@@ -39,6 +39,7 @@ public class PropertyTile extends BuyableTile {
         setState(new OwnedState(this));
     }
 
+    @Override
     public void sell(Player player){
         state.sell(player);
     }
@@ -49,6 +50,10 @@ public class PropertyTile extends BuyableTile {
 
     public int getBuildingCount() {
         return buildingCount;
+    }
+
+    public int getSellingPrice() {
+        return buildingRents[0];
     }
 
     @Override

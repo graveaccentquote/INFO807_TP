@@ -10,7 +10,7 @@ public class FreeState extends PropertyState {
 
     @Override
     public void sell(Player player) {
-        // Can't be selled if already free
+        // Can't be sold if already free
     }
 
     @Override
