@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PropertyLot extends BuyableLot {
 
@@ -19,24 +18,23 @@ public class PropertyLot extends BuyableLot {
 
     ///Methods
     public void onBuildEvent() {
-        if(children.size()>0){
-            int max, min;
-            max = min = children.get(0).getBuildingCount();
-            for(PropertyTile p : children){
-                int count = p.getBuildingCount();
-                max = Math.max(count, max);
-                min = Math.min(count, min);
-            }
-            minBuildingCount = min;
-            if(max == min){
-                maxBuildingCount = max+1;
-            } else {
-                maxBuildingCount = max;
-            }
-        }
-    }
+        ArrayList<Integer> buildingCounts = new ArrayList<Integer>();
 
-    // Checks if a number of existing buildings on a tile
+        for (PropertyTile child : children)
+            buildingCounts.add(child.getBuildingCount());
+        try
+        {
+            minBuildingCount = Collections.min(buildingCounts);
+            //The max is either max or max+1 if min==max
+            maxBuildingCount = Math.max(Collections.max(buildingCounts), minBuildingCount+1);
+        }
+        catch (Exception e)
+        {
+            System.err.print("Error, trying to find buildingCount in empty list of children");
+        }
+
+
+    } // Checks if a number of existing buildings on a tile
     // allows the owner to build more buildings on it
     public boolean isValidBuildingCount(int buildingCount) {
         return buildingCount<maxBuildingCount;
@@ -44,31 +42,28 @@ public class PropertyLot extends BuyableLot {
 
     @Override
     public void onOwnershipChange() {
-        boolean isConstructable = true;
-        if(children.size()>0){
-            Player owner = children.get(0).getOwner();
-            if(owner!=null){
-                int i = 1;
-                while(i<children.size() && isConstructable){
-                    if(children.get(i).getOwner() != owner){
-                        isConstructable = false;
-                    }
-                    i++;
-                }
-            } else {
-                isConstructable = false;
-            }
+
+        HashMap<Player, Integer> map = new HashMap<Player, Integer>();
+        Player owner;
+
+        for (PropertyTile propertyTile : children)
+        {
+            owner = propertyTile.getOwner();
+            if (map.containsKey(owner) )
+                map.put(owner, map.get(owner) + 1);
+            else
+                map.put(owner, 1);
         }
 
-        if(isConstructable){
-            for(PropertyTile t : children){
-                t.becomeConstructible();
-            }
-        } else {
-            for(PropertyTile t : children){
-                t.becomeUnconstructible();
-            }
-        }
+        //Compute the player with the max properties of this Lot
+        Player p = Collections.max(map.entrySet(), Map.Entry.comparingByValue()).getKey();
+
+        if (p != null && map.get(p) == children.size())
+            for (PropertyTile propertyTile : children)
+                propertyTile.becomeConstructible();
+        else
+            for (PropertyTile propertyTile : children)
+                propertyTile.becomeUnconstructible();
     }
 
     @Override

@@ -33,12 +33,14 @@ public class PropertyTile extends BuyableTile {
 
     public void becomeConstructible() {
         setState(new ConstructibleState(this));
+        this.rentMultiplier = 2;
     }
 
     public void becomeUnconstructible() {
         if(getOwner()!=null){
             setState(new OwnedState(this));
         }
+        this.rentMultiplier = 1;
     }
 
     @Override
