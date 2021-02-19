@@ -86,6 +86,10 @@ public class PropertyTile extends BuyableTile {
         state.onOwnershipChange(player);
     }
 
+    public String toBuildInfoString(){
+        return tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
+    }
+
     public String toString(){
         return this.tileName
                 + " ["

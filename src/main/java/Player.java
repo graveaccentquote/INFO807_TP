@@ -27,6 +27,7 @@ public class Player {
 
     public void playTurn() {
         System.out.println("--" + playerName +"'s turn --");
+        System.out.println("Balance : "+money+"$");
         playOneRoll();
         while (canPlayAgain()){
             System.out.println(playerName+" rolled a double and can play again !");
@@ -89,7 +90,8 @@ public class Player {
         System.out.println("Current player's properties :");
         ArrayList<PropertyTile> properties = getOwnedProperties();
         for(int i=0;i<properties.size();i++){
-            System.out.println(i+") "+properties.get(i).tileName);
+            PropertyTile t = properties.get(i);
+            System.out.println(i+") "+t.toBuildInfoString());
         }
     }
 
