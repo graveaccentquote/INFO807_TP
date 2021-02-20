@@ -85,7 +85,7 @@ public class Board {
             HashMap<String, PropertyLot> propertyLotHashMap = new HashMap<String, PropertyLot>();
 
             for (Object lotName : propertyLots)
-                propertyLotHashMap.put((String) lotName, new PropertyLot());
+                propertyLotHashMap.put((String) lotName, new PropertyLot((String)lotName));
 
             //Parse the tiles
             JSONArray tilesArray = (JSONArray) board.get("tiles");
