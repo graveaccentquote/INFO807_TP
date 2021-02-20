@@ -110,7 +110,7 @@ public class PropertyTile extends BuyableTile {
     public void applyRent(Player player) {
         int rentCost = (buildingRents[buildingCount])*rentMultiplier;
 
-        System.out.println(player.toString() + " landed on "+owner+"'s property and must pay a "+rentCost+"$ rent");
+        System.out.println(player.toString() + " landed on "+tileName+", owned by "+owner+", and and must pay a "+rentCost+"$ rent");
         int oldS = owner.getMoney();
         int oldB = player.getMoney();
 

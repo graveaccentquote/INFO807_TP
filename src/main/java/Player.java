@@ -78,6 +78,7 @@ public class Player {
     private void constructionRoutine() {
         ArrayList<PropertyTile> owned = getOwnedProperties();
         if(owned.size()>0){
+            System.out.println("Current balance : "+money+"$");
             displayOwnedProperties(owned);
             PropertyTile t = getPropertyChoice(owned);
             if(t!= null){
