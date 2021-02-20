@@ -30,17 +30,22 @@ public class MonopolyGame {
     public static void main(String[] args)
     {
         MonopolyGame game = new MonopolyGame("./gameSetup.json");
+        game.startGame();
     }
 
     ///Methods
     public void startGame() {
         //Randomize the first player :
         Random rng = new Random();
-        int index = rng.nextInt() % players.size();
-        if(index<0) index+= players.size();
+        int index = 0;
+        /*int index = rng.nextInt() % players.size();
+        if(index<0) index+= players.size();*/
         currentPlayer = players.get(index);
-
-        currentPlayer.playTurn();
+        while(true){
+            currentPlayer.playTurn();
+            index = (index+1)%players.size();
+            currentPlayer = players.get(index);
+        }
     }
 
     public void movePlayer(int tileCount) {
