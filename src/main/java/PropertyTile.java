@@ -96,12 +96,12 @@ public class PropertyTile extends BuyableTile {
     }
 
     public String toBuildInfoString(){
-        return "("+lot.lotName+")"+ tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
+        return "("+lot.getLotName()+")"+ tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
     }
 
     public String toString(){
         return  "("
-                +lot.lotName
+                +lot.getLotName()
                 +")"
                 + this.tileName
                 + " ["
