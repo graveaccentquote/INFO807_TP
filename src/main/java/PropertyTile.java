@@ -91,7 +91,7 @@ public class PropertyTile extends BuyableTile {
     }
 
     public String toBuildInfoString(){
-        return tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
+        return "("+lot.lotName+")"+ tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
     }
 
     public String toString(){
@@ -109,10 +109,18 @@ public class PropertyTile extends BuyableTile {
 
     public void applyRent(Player player) {
         int rentCost = (buildingRents[buildingCount])*rentMultiplier;
+        System.out.println(player.toString() + " landed on "+owner+"'s property and must pay a "+rentCost+"$ rent");
         if(player.canAfford(rentCost)){
-            player.transferMoney(rentCost, player);
+            int oldS = owner.getMoney();
+            int oldB = player.getMoney();
+            player.transferMoney(rentCost, owner);
+            int newS = owner.getMoney();
+            int newB = player.getMoney();
+            System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
+            System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
         } else {
-            // TODO player loses the game
+            // player loses the game
+            System.out.println(player+" couldn't pay and loses the game.");
         }
     }
 }
