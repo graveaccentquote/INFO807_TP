@@ -14,6 +14,7 @@ public class PublicServiceTile extends BuyableTile {
     {
         this.tileName = name;
         this.cost = buyingCost;
+        this.rent = buyingCost/10;
         this.lot = parent;
         parent.addChild(this);
     }
@@ -31,7 +32,6 @@ public class PublicServiceTile extends BuyableTile {
             //Make the player pay the tax
             int diceSum = player.getDiceSum();
             int tax = this.rent * this.rentMultiplier * diceSum;
-            
             System.out.println(player+" landed on the "+tileName+" service, owned by "+owner);
             System.out.println(player+"'s last roll was "+diceSum+", they must pay "+rent*rentMultiplier+"*"+diceSum+"="+tax+"$ to the owner");
             int oldS = owner.getMoney();
