@@ -91,7 +91,7 @@ public class Player {
     }
 
     private void displayOwnedProperties(ArrayList<PropertyTile> properties) {
-        System.out.println("Current player's properties :");
+        System.out.println(playerName+"'s properties :");
         for(int i=0;i<properties.size();i++){
             PropertyTile t = properties.get(i);
             System.out.println(i+") "+t.toBuildInfoString());

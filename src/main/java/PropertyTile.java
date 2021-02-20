@@ -109,18 +109,16 @@ public class PropertyTile extends BuyableTile {
 
     public void applyRent(Player player) {
         int rentCost = (buildingRents[buildingCount])*rentMultiplier;
+
         System.out.println(player.toString() + " landed on "+owner+"'s property and must pay a "+rentCost+"$ rent");
-        if(player.canAfford(rentCost)){
-            int oldS = owner.getMoney();
-            int oldB = player.getMoney();
-            player.transferMoney(rentCost, owner);
-            int newS = owner.getMoney();
-            int newB = player.getMoney();
-            System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
-            System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
-        } else {
-            // player loses the game
-            System.out.println(player+" couldn't pay and loses the game.");
-        }
+        int oldS = owner.getMoney();
+        int oldB = player.getMoney();
+
+        player.transferMoney(rentCost, owner);
+
+        int newS = owner.getMoney();
+        int newB = player.getMoney();
+        System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
+        System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
     }
 }
