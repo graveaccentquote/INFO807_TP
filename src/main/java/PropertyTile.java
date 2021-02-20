@@ -95,7 +95,10 @@ public class PropertyTile extends BuyableTile {
     }
 
     public String toString(){
-        return this.tileName
+        return  "("
+                +lot.lotName
+                +")"
+                + this.tileName
                 + " ["
                 + this.cost
                 + " / "
