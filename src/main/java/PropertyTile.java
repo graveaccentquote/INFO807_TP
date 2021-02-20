@@ -60,11 +60,16 @@ public class PropertyTile extends BuyableTile {
         return buildingRents[0];
     }
 
-    public void addBuilding() {
+    public boolean addBuilding() {
         if(owner.canAfford(buildingCost)){
             owner.debit(buildingCost);
             buildingCount++;
+            System.out.println("New building successfully built ! There are now "+buildingCount+" buildings on this property");
             lot.onBuildEvent();
+            return true;
+        } else {
+            System.out.println(owner+" can't afford a new building on this property.");
+            return false;
         }
     }
 

@@ -17,10 +17,11 @@ public class ConstructedState extends PropertyState {
     public void build() {
         int count = tile.getBuildingCount();
         if(tile.lot.isValidBuildingCount(count)){
-            if(count==4){
+            if(count==4 && tile.addBuilding()){
                 tile.setState(new FullyConstructedState(tile));
             }
-            tile.addBuilding();
+        } else {
+            System.out.println("There can't be more buildings on this property without building on the other properties of the lot first");
         }
     }
 
