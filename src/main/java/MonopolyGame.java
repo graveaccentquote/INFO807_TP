@@ -29,7 +29,14 @@ public class MonopolyGame {
     ///Main
     public static void main(String[] args)
     {
-        MonopolyGame game = new MonopolyGame("./gameSetup.json");
+
+        /* Demo game setup : */
+        MonopolyGame game = new MonopolyGame("./demoGameSetup.json");
+
+        /* Regular game setup : */
+        //MonopolyGame game = new MonopolyGame("./demoGameSetup.json");
+
+
         game.startGame();
     }
 

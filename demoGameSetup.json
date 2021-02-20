@@ -154,24 +154,6 @@
         "name": "B & O Railroad",
         "buyingCost":  "200"
       },
-      { "type": "PropertyTile",
-        "name": "Atlantic Avenue",
-        "parent": "yellow",
-        "buyingCost": "260",
-        "constructionCost": "150",
-        "rents": [
-          "22", "110", "330", "800", "975", "1150"
-        ]
-      },
-      { "type": "PropertyTile",
-        "name": "Ventnor Avenue",
-        "parent": "yellow",
-        "buyingCost": "260",
-        "constructionCost": "150",
-        "rents": [
-          "22", "110", "330", "800", "975", "1150"
-        ]
-      },
       {
         "type": "PublicServiceTile",
         "name": "Water Works",
