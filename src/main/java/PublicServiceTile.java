@@ -31,7 +31,19 @@ public class PublicServiceTile extends BuyableTile {
             //Make the player pay the tax
             int diceSum = player.getDiceSum();
             int tax = this.rent * this.rentMultiplier * diceSum;
+            
+            System.out.println(player+" landed on the "+tileName+" service, owned by "+owner);
+            System.out.println(player+"'s last roll was "+diceSum+", they must pay "+rent*rentMultiplier+"*"+diceSum+"="+tax+"$ to the owner");
+            int oldS = owner.getMoney();
+            int oldB = player.getMoney();
+
             player.transferMoney(tax, this.owner);
+
+            int newS = owner.getMoney();
+            int newB = player.getMoney();
+            System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
+            System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
+
 
             //Launch the buying status routine
             player.displayBuyingStatus(this);
@@ -39,5 +51,10 @@ public class PublicServiceTile extends BuyableTile {
         else
             //Launch the BuyableTile buy routine
             this.buyRoutine(player);
+    }
+
+    @Override
+    public String toString(){
+        return "Public service "+tileName+" [buying price : "+cost+"$, base rent : "+rent+"$]";
     }
 }
