@@ -16,6 +16,7 @@ public class FullyConstructedState extends PropertyState {
     @Override
     public void build() {
         // Can't build anymore
+        System.out.println("All possibles buildings have already been built on this property.");
     }
 
     @Override

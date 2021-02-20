@@ -37,9 +37,24 @@ public class TrainStationTile extends BuyableTile {
         if (!this.isFree()){
             //Make the player pay the tax
             int tax = this.rent * this.rentMultiplier;
+
+            System.out.println(player+" landed on the "+tileName+" train station and must pay "+tax+"$ to the owner ("+owner+")");
+            int oldS = owner.getMoney();
+            int oldB = player.getMoney();
+
             player.transferMoney(tax, this.owner);
+
+            int newS = owner.getMoney();
+            int newB = player.getMoney();
+            System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
+            System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
         }
         else
             this.buyRoutine(player);
+    }
+
+    @Override
+    public String toString() {
+        return "Train station "+tileName+" [buying price : "+cost+"$, base rent : "+rent+"$]";
     }
 }

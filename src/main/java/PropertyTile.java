@@ -60,11 +60,16 @@ public class PropertyTile extends BuyableTile {
         return buildingRents[0];
     }
 
-    public void addBuilding() {
+    public boolean addBuilding() {
         if(owner.canAfford(buildingCost)){
             owner.debit(buildingCost);
             buildingCount++;
+            System.out.println("New building successfully built ! There are now "+buildingCount+" buildings on this property");
             lot.onBuildEvent();
+            return true;
+        } else {
+            System.out.println(owner+" can't afford a new building on this property.");
+            return false;
         }
     }
 
@@ -91,11 +96,14 @@ public class PropertyTile extends BuyableTile {
     }
 
     public String toBuildInfoString(){
-        return tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
+        return "("+lot.lotName+")"+ tileName +" ["+getBuildingCount()+" buildings, "+buildingCost+"$ per building]";
     }
 
     public String toString(){
-        return this.tileName
+        return  "("
+                +lot.lotName
+                +")"
+                + this.tileName
                 + " ["
                 + this.cost
                 + " / "
@@ -106,10 +114,16 @@ public class PropertyTile extends BuyableTile {
 
     public void applyRent(Player player) {
         int rentCost = (buildingRents[buildingCount])*rentMultiplier;
-        if(player.canAfford(rentCost)){
-            player.transferMoney(rentCost, player);
-        } else {
-            // TODO player loses the game
-        }
+
+        System.out.println(player.toString() + " landed on "+tileName+", owned by "+owner+", and and must pay a "+rentCost+"$ rent");
+        int oldS = owner.getMoney();
+        int oldB = player.getMoney();
+
+        player.transferMoney(rentCost, owner);
+
+        int newS = owner.getMoney();
+        int newB = player.getMoney();
+        System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
+        System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
     }
 }

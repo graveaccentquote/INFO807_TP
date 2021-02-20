@@ -10,9 +10,8 @@ public class ConstructibleState extends SellableState {
 
     @Override
     public void build() {
-        tile.setState(new ConstructedState(tile));
         // no need to check if the building count is valid, in this state the building count is always 0
-        tile.addBuilding();
+        if(tile.addBuilding())  tile.setState(new ConstructedState(tile));
     }
 
     @Override

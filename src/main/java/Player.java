@@ -1,5 +1,6 @@
 import java.io.Console;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +28,6 @@ public class Player {
 
     public void playTurn() {
         System.out.println("--" + playerName +"'s turn --");
-        System.out.println("Balance : "+money+"$");
         playOneRoll();
         while (canPlayAgain()){
             System.out.println(playerName+" rolled a double and can play again !");
@@ -55,6 +55,7 @@ public class Player {
     }
 
     public boolean displayBuyingProposition(BuyableTile tile) {
+        System.out.println("Current balance : "+money+"$");
         System.out.println("Do you want to buy this tile ? [y/n]");
         System.out.println(tile.toString());
         Scanner input = new Scanner( System.in );
@@ -77,6 +78,7 @@ public class Player {
     private void constructionRoutine() {
         ArrayList<PropertyTile> owned = getOwnedProperties();
         if(owned.size()>0){
+            System.out.println("Current balance : "+money+"$");
             displayOwnedProperties(owned);
             PropertyTile t = getPropertyChoice(owned);
             if(t!= null){
@@ -90,7 +92,7 @@ public class Player {
     }
 
     private void displayOwnedProperties(ArrayList<PropertyTile> properties) {
-        System.out.println("Current player's properties :");
+        System.out.println(playerName+"'s properties :");
         for(int i=0;i<properties.size();i++){
             PropertyTile t = properties.get(i);
             System.out.println(i+") "+t.toBuildInfoString());
@@ -101,12 +103,17 @@ public class Player {
         Scanner input = new Scanner( System.in );
         System.out.println("Which property do you want to build on ?");
         System.out.println("Type -1 to build on none.");
-        int p = input.nextInt();
-        if(p<0 || p>=ownedProperties.size()){
+        try{
+            int p = input.nextInt();
+            if(p<0 || p>=ownedProperties.size()){
+                return null;
+            } else {
+                return ownedProperties.get(p);
+            }
+        } catch(InputMismatchException e) {
             return null;
-        } else {
-            return ownedProperties.get(p);
         }
+
     }
 
     private ArrayList<PropertyTile> getOwnedProperties(){

@@ -35,9 +35,9 @@ public abstract class BuyableTile extends Tile {
             if (player.displayBuyingProposition(this)) {
                 //The player accepts, we debit him
                 player.debit(this.cost);
-
                 //Then we apply the on ownership change subroutine
                 this.changeOwnership(player);
+                System.out.println(tileName+" was successfully bought by "+player);
             }
         }
         else
