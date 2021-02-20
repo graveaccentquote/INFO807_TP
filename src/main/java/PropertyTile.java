@@ -7,7 +7,7 @@ public class PropertyTile extends BuyableTile {
 
     private int buildingCost;
 
-    public PropertyLot lot;
+    private PropertyLot lot;
 
     private PropertyState state;
 
@@ -126,4 +126,6 @@ public class PropertyTile extends BuyableTile {
         System.out.println(owner.toString() +" "+oldS+"$ -> "+newS+"$");
         System.out.println(player.toString() +" "+oldB+"$ -> "+newB+"$");
     }
+
+    public PropertyLot getLot() { return this.lot; }
 }

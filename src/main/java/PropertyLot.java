@@ -9,7 +9,7 @@ public class PropertyLot extends BuyableLot {
     private int minBuildingCount;
 
     //List of children of this lot
-    public List<PropertyTile> children = new ArrayList<PropertyTile> ();
+    private List<PropertyTile> children = new ArrayList<PropertyTile> ();
 
     ///Constructors
     public PropertyLot(String name){

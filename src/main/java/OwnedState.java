@@ -11,7 +11,7 @@ public class OwnedState extends SellableState {
     @Override
     public void build() {
         // Can't build in this state (owner doesn't own every property of the lot)
-        System.out.println(tile.owner+" doesn't own every property in the "+tile.lot.getLotName()+" lot, therefore can't build on this property yet");
+        System.out.println(tile.owner+" doesn't own every property in the "+tile.getLot().getLotName()+" lot, therefore can't build on this property yet");
     }
 
     @Override

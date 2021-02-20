@@ -3,7 +3,7 @@ public class TrainStationTile extends BuyableTile {
     private final int trainStationRent = 25;
 
     ///Attributes
-    public TrainStationLot lot;
+    private TrainStationLot lot;
 
     ///Constructors
     public TrainStationTile(String name, int buyingCost)

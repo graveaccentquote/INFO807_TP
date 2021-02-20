@@ -1,6 +1,6 @@
 public abstract class Tile {
 
-    public String tileName;
+    protected String tileName;
 
     ///Methods
     public abstract void applyOnStop(Player player);

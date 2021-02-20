@@ -13,11 +13,11 @@ public class MonopolyGame {
 
 
     ///Attributes
-    public Player currentPlayer;
+    private Player currentPlayer;
 
-    public Board board;
+    private Board board;
 
-    public ArrayList<Player> players = new ArrayList<Player> ();
+    private ArrayList<Player> players = new ArrayList<Player> ();
 
     ///Constructors
     public MonopolyGame (String fileName)
