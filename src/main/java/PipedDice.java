@@ -17,7 +17,7 @@ public class PipedDice extends Dice {
         if(rollCount<predeterminedRollCount){
             value = firstRolls[rollCount];
         } else {
-            value = rdm.nextInt() % MAX + MIN;
+            value = rdm.nextInt(MAX - MIN + 1) + MIN;
         }
         rollCount++;
     }
