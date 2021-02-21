@@ -16,7 +16,7 @@ public class ConstructedState extends PropertyState {
     @Override
     public void build() {
         int count = tile.getBuildingCount();
-        if(tile.lot.isValidBuildingCount(count)){
+        if(tile.getLot().isValidBuildingCount(count)){
             if(count==4 && tile.addBuilding()){
                 tile.setState(new FullyConstructedState(tile));
             }

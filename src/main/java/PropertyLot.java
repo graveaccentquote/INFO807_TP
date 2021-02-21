@@ -2,13 +2,14 @@ import java.util.*;
 
 public class PropertyLot extends BuyableLot {
     ///Attributes
+    private String lotName;
+
     // Inclusive limits of the maximum buildings there can be on a single property of the lot
-    public String lotName;
-    public int maxBuildingCount;
-    public int minBuildingCount;
+    private int maxBuildingCount;
+    private int minBuildingCount;
 
     //List of children of this lot
-    public List<PropertyTile> children = new ArrayList<PropertyTile> ();
+    private List<PropertyTile> children = new ArrayList<PropertyTile> ();
 
     ///Constructors
     public PropertyLot(String name){
@@ -72,4 +73,6 @@ public class PropertyLot extends BuyableLot {
         this.children.add((PropertyTile) child);
         child.setParent(this);
     }
+
+    public String getLotName(){ return this.lotName; }
 }

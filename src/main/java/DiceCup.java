@@ -8,7 +8,12 @@ public class DiceCup {
 
     public DiceCup(){
         for(int i = 0; i<DICE_COUNT; ++i){
-            dice.add(new Dice());
+
+            //For the demo, we use fixed Dice rolls
+            dice.add(new PipedDice());
+
+            //For a regular game :
+            //dice.add(new Dice());
         }
     }
 

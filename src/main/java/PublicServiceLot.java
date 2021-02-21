@@ -9,7 +9,7 @@ public class PublicServiceLot extends BuyableLot {
     private final int highMultiplier = 10;
 
     //List of children of this lot
-    public List<PublicServiceTile> children = new ArrayList<PublicServiceTile> ();
+    private List<PublicServiceTile> children = new ArrayList<PublicServiceTile> ();
 
     ///Constructors
     public PublicServiceLot() {} //Default constructor

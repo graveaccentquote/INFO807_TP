@@ -13,11 +13,11 @@ public class MonopolyGame {
 
 
     ///Attributes
-    public Player currentPlayer;
+    private Player currentPlayer;
 
-    public Board board;
+    private Board board;
 
-    public ArrayList<Player> players = new ArrayList<Player> ();
+    private ArrayList<Player> players = new ArrayList<Player> ();
 
     ///Constructors
     public MonopolyGame (String fileName)
@@ -29,7 +29,14 @@ public class MonopolyGame {
     ///Main
     public static void main(String[] args)
     {
-        MonopolyGame game = new MonopolyGame("./gameSetup.json");
+
+        /* Demo game setup : */
+        MonopolyGame game = new MonopolyGame("./demoGameSetup.json");
+
+        /* Regular game setup : */
+        //MonopolyGame game = new MonopolyGame("./demoGameSetup.json");
+
+
         game.startGame();
     }
 
